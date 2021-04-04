@@ -1,7 +1,7 @@
 # Table of contents
 
 * [简介](README.md)
-* [学习路线](untitled.md)
+* [学习路线](learning-path.md)
 
 ## 服务器端主题 <a id="server-side-topics"></a>
 

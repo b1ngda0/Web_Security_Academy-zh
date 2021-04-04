@@ -4,9 +4,5 @@
 
 
 
-{% hint style="info" %}
- 本人的翻译并不是特别好
-{% endhint %}
-
-Once you're strong enough, save the world:
+本人的翻译并不是特别好
 
