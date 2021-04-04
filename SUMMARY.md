@@ -1,6 +1,6 @@
 # Table of contents
 
-* [PortSwigger Web学院](README.md)
+* [简介](README.md)
 * [译序](Bullshit.md)
 * [学习路线](learning-path.md)
 
