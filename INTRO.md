@@ -2,7 +2,7 @@
 description: '关于PortSwigger Web Security Academy的翻译文章'
 ---
 
-# 关于PortSwigger Web Security Academy的翻译文章
+# 简介
 
 - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
 - 时间：2021-04-04
