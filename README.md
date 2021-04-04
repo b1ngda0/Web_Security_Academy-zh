@@ -1,8 +1,6 @@
----
-description: '关于PortSwigger Web Security Academy的翻译文章'
----
 
-# PortSwigger Web安全学院文章翻译
+
+# 关于PortSwigger Web Security Academy的翻译文章
 
 - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
 - 时间：2021-04-04
