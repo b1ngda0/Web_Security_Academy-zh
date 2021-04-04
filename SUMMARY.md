@@ -46,3 +46,5 @@
 * [基于DOM的漏洞](1-client-side-topics/ji-yu-dom-de-lou-dong.md)
 * [WebSocket](1-client-side-topics/websocket.md)
 
+## 进阶主题 <a id="2-advanced-topics"></a>
+
