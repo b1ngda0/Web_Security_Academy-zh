@@ -48,3 +48,7 @@
 
 ## 进阶主题 <a id="2-advanced-topics"></a>
 
+---
+
+* [不安全的反序列化](deserialization.md)
+
