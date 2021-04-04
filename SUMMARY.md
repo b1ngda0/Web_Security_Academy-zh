@@ -39,7 +39,18 @@
 
 ## 客户端主题 <a id="1-client-side-topics"></a>
 
-* [跨站脚本（XSS）](1-client-side-topics/kua-zhan-jiao-ben-xss.md)
+* [跨站脚本（XSS）](1-client-side-topics/0-cross-site-scripting/README.md)
+  * [跨站脚本](1-client-side-topics/0-cross-site-scripting/1-cross-site-scripting.md)
+  * [反射型XSS](1-client-side-topics/0-cross-site-scripting/2-cross-site-scripting-reflected.md)
+  * [存储型XSS](1-client-side-topics/0-cross-site-scripting/3-stored.md)
+  * [基于DOM的XSS](1-client-side-topics/0-cross-site-scripting/4-dom-based.md)
+  * [](1-client-side-topics/0-cross-site-scripting/5-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/6-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/7-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/8-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/9-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/10-.md)
+  * [](1-client-side-topics/0-cross-site-scripting/11-.md)
 * [跨站请求伪造（CSRF）](1-client-side-topics/csrf.md)
 * [跨域资源共享（CORS）](1-client-side-topics/kua-yu-zi-yuan-gong-xiang-cors.md)
 * [点击劫持](1-client-side-topics/dian-ji-jie-chi.md)
