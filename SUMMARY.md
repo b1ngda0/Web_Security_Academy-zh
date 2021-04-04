@@ -40,7 +40,7 @@
 ## 客户端主题 <a id="1-client-side-topics"></a>
 
 * [跨站脚本（XSS）](1-client-side-topics/kua-zhan-jiao-ben-xss.md)
-* [跨站请求伪造（CSRF）](1-client-side-topics/kua-zhan-qing-qiu-wei-zao-csrf.md)
+* [跨站请求伪造（CSRF）](1-client-side-topics/csrf.md)
 * [跨域资源共享（CORS）](1-client-side-topics/kua-yu-zi-yuan-gong-xiang-cors.md)
 * [点击劫持](1-client-side-topics/dian-ji-jie-chi.md)
 * [基于DOM的漏洞](1-client-side-topics/ji-yu-dom-de-lou-dong.md)
@@ -48,7 +48,5 @@
 
 ## 进阶主题 <a id="2-advanced-topics"></a>
 
----
-
-* [不安全的反序列化](deserialization.md)
+* [不安全的反序列化](2-advanced-topics/deserialization.md)
 
