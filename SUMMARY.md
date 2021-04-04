@@ -2,7 +2,7 @@
 
 * [简介](README.md)
 * [译序](Bullshit.md)
-* [学习路线](learning-path.md)
+* [学习路线&目录](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
 

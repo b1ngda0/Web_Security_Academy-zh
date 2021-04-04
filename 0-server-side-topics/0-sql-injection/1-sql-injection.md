@@ -1,8 +1,6 @@
----
-description: '原文链接：https://portswigger.net/web-security/sql-injection'
----
-
 # SQL 注入
+
+> 原文链接：https://portswigger.net/web-security/sql-injection
 
 本部分，我们将通过列举一些通用示例来解释：什么是 SQL 注入，如何发现和验证不同类型的 SQL 注入漏洞，并总结如何防止 SQL 注入。
 
@@ -14,7 +12,9 @@ SQL 注入是一种 Web 安全漏洞，它允许攻击者干扰应用程序的�
 
 在一些情况下，攻击者还可以升级 SQL 注入攻击来破坏基础服务器或其他后端基础结构，或者执行拒绝服务攻击。
 
-https://youtu.be/wX6tszfgYp4
+> 译者注：通过下面的链接，在YouTube上观看视频进行学习
+>
+> https://youtu.be/wX6tszfgYp4
 
 ### 一次成功的 SQL 注入有什么影响
 
