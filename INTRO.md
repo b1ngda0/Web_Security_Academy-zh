@@ -1,6 +1,7 @@
 ---
-关于PortSwigger Web Security Academy的翻译文章
+description: '关于PortSwigger Web Security Academy的翻译文章'
 ---
+
 # 关于PortSwigger Web Security Academy的翻译文章
 
 - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
