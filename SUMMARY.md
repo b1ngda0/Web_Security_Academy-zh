@@ -1,6 +1,6 @@
 # Table of contents
 
-* [关于PortSwigger Web Security Academy的翻译文章](README.md)
+* [简介](INTRO.md)
 * [学习路线](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
