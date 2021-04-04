@@ -1,4 +1,4 @@
-# PortSwigger Web安全学院的部分文章翻译
+# PortSwigger Web安全学院文章翻译
 
 - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
 - 时间：2021-04-04
