@@ -1,12 +1,13 @@
 # PortSwigger Web Security Academy - 中文翻译
 
 > 关于PortSwigger Web Security Academy的翻译文章
-> ![Cover](./cover.jpg)
 > - 原始链接：https://portswigger.net/web-security/
 > - 原作者：[PortSwigger](https://portswigger.net/)
 > - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
 > - 时间：2021-04-04
 > - 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+> 
+> ![Cover](./cover.jpg)
 
 
 
