@@ -8,7 +8,10 @@
 > - 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
-## 阅读方式
+![Cover](./cover.jpg)
+
+
+## 0x00 阅读方式
 
 ### 在线阅读
 - https://fr33.gitbook.io/portswigger-web-security-academy-zh/-MXS4M6EDVijmu663i25/
@@ -45,12 +48,12 @@ http://IP:4000
 
 
 
-## 阅读建议
+## 0x01 阅读建议
 
 动手实践！完成PortSwigger的Lab实验。
 
 
-## 免责声明
+## 0x02 免责声明
 
 @\_0xf4n9x\_纯粹出于学习目的与个人兴趣翻译，不追求任何经济利益，也坚决拒绝其他任何人以此牟利。本译文只供学习研究参考之用，不得用于商业用途。
 
