@@ -7,7 +7,7 @@
 > - 时间：2021-04-04
 > - 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 > 
-> <img src="./cover.jpg" width="100%" height="100%">
+> <img src="./.gitbook/assets/cover.jpg" width="100%" height="100%">
 
 
 
