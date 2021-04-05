@@ -1,4 +1,6 @@
-# SQL注入UNION攻击
+---
+description: '原文链接：https://portswigger.net/web-security/sql-injection/union-attacks'
+---
 
-> 原文链接：[https://portswigger.net/web-security/sql-injection/union-attacks](https://portswigger.net/web-security/sql-injection/union-attacks)
+# SQL注入UNION攻击
 

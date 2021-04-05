@@ -1,6 +1,8 @@
-# SQL注入
+---
+description: '原文链接：https://portswigger.net/web-security/sql-injection'
+---
 
-> 原文链接：[https://portswigger.net/web-security/sql-injection](https://portswigger.net/web-security/sql-injection)
+# SQL注入
 
 本部分，我们将通过列举一些通用示例来解释：什么是 SQL 注入，如何发现和验证不同类型的 SQL 注入漏洞，并总结如何防止 SQL 注入。
 
@@ -149,9 +151,9 @@ SELECT * FROM information_schema.tables
 
 > 阅读更多：
 >
-> [在 SQL 注入攻击中检查数据库](https://portswigger.net/web-security/sql-injection/examining-the-database)
+> {% page-ref page="3-examining-the-database.md" %}
 >
-> [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+> {% page-ref page="5-cheat-sheet.md" %}
 
 ## SQL 盲注漏洞
 
@@ -165,11 +167,11 @@ SQL 注入的许多实例都是盲注漏洞。这意味着应用程序不会再�
 
 > 阅读更多：
 >
-> [SQL 盲注](https://portswigger.net/web-security/sql-injection/blind)
+> {% page-ref page="4-blind.md" %}
 
 ## 如何检测 SQL 注入漏洞
 
-使用 Burp Suite's [web vulnerability scanner](https://portswigger.net/burp/vulnerability-scanner) 可以快速、可靠地检测大多数 SQL 注入漏洞。
+使用 [Burp Suite的Web漏洞扫描器](https://portswigger.net/burp/vulnerability-scanner) 可以快速、可靠地检测大多数 SQL 注入漏洞。
 
 可以通过针对应用程序中的每个入口点使用系统化的测试集来手动检测 SQL 注入。这通常涉及：
 
@@ -214,7 +216,7 @@ SQL 注入的许多实例都是盲注漏洞。这意味着应用程序不会再�
 
 > 阅读更多：
 >
-> [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+> {% page-ref page="5-cheat-sheet.md" %}
 
 ## 如何防止 SQL 注入
 
