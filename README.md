@@ -5,13 +5,44 @@
 > - 原作者：[PortSwigger](https://portswigger.net/)
 > - 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
 > - 时间：2021-04-04
-> - 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+> - 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
 ## 阅读方式
 
-- 在线阅读：https://fr33.gitbook.io/portswigger-web-security-academy-zh/-MXS4M6EDVijmu663i25/
-- PDF下载：
+### 在线阅读
+- https://fr33.gitbook.io/portswigger-web-security-academy-zh/-MXS4M6EDVijmu663i25/
+
+### 离线部署
+
+安装`nodejs`和`npm`
+
+```shell
+apt install nodejs npm
+```
+
+使用`npm`安装`gitbook`
+
+```shell
+npm install gitbook-cli -g
+```
+
+克隆此仓库
+
+```shell
+git clone https://github.com/FanqXu/Web_Security_Academy-zh
+```
+
+部署
+
+```shell
+cd Web_Security_Academy-zh && gitbook serve
+```
+
+访问 
+
+http://IP:4000
+
 
 
 ## 阅读建议

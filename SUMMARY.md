@@ -93,5 +93,5 @@
 * [OAuth认证](2-advanced-topics/5-oauth/README.md)
   * [OAuth 2.0身份验证漏洞](2-advanced-topics/5-oauth/1-oauth.md)
   * [OAuth授权类型](2-advanced-topics/5-oauth/2-oauth-grant-types.md)
-  * [OpenID连接](2-advanced-topics/5-oauth/3-oauth-openid.md)
+  * [OpenID Connect](2-advanced-topics/5-oauth/3-oauth-openid.md)
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
