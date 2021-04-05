@@ -1,7 +1,7 @@
 # Table of contents
 
 * [简介](README.md)
-* [译序](Bullshit.md)
+* [译序](bullshit.md)
 * [学习路线&目录](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
@@ -38,7 +38,7 @@
   * [XML实体](0-server-side-topics/8-xxe/2-xxe-xml-entities.md)
   * [查找和利用XXE盲目漏洞](0-server-side-topics/8-xxe/3-xxe-blind.md)
 
-## 客户端主题 <a id="1-client-side-topics"></a> 
+## 客户端主题 <a id="1-client-side-topics"></a>
 
 * [跨站脚本（XSS）](1-client-side-topics/0-cross-site-scripting/README.md)
   * [跨站脚本](1-client-side-topics/0-cross-site-scripting/1-cross-site-scripting.md)
@@ -95,3 +95,4 @@
   * [OAuth授权类型](2-advanced-topics/5-oauth/2-oauth-grant-types.md)
   * [OpenID Connect](2-advanced-topics/5-oauth/3-oauth-openid.md)
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
+
