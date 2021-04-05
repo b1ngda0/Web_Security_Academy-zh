@@ -1,6 +1,8 @@
-# 学习路线&目录
+---
+description: '原文链接：https://portswigger.net/web-security/learning-path'
+---
 
-> 原文链接：[https://portswigger.net/web-security/learning-path](https://portswigger.net/web-security/learning-path)
+# 学习路线&目录
 
 如果您是网络安全的新手，可能很难知道从哪里开始。这就是为什么我们创建了这个建议的学习路线，为您指明正确的方向。我们建议您边学边完成实验，如果遇到困难，不要害怕继续学习下一个主题。一旦您的技能得到进一步发展，可以回到更具挑战性的实验。
 
