@@ -75,7 +75,7 @@
 * [不安全的反序列化](2-advanced-topics/0-deserialization/README.md)
   * [不安全的反序列化](2-advanced-topics/0-deserialization/1-deserialization.md)
   * [利用不安全的反序列化漏洞](2-advanced-topics/0-deserialization/2-deserialization-exploiting.md)
-* [服务器端模板注入](2-advanced-topics/1-server-side-template-injection/READ.md)
+* [服务器端模板注入](2-advanced-topics/1-server-side-template-injection/README.md)
   * [服务器端模板注入](2-advanced-topics/1-server-side-template-injection/1-server-side-template-injection.md)
   * [利用服务器端模板注入漏洞](2-advanced-topics/1-server-side-template-injection/2-server-side-template-injection-exploiting.md)
 * [Web缓存中毒](2-advanced-topics/2-web-cache-poisoning/README.md)
