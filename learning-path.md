@@ -9,7 +9,7 @@
 
 对于完全的初学者，我们建议从我们的服务器端主题开始。这些漏洞通常更容易学习，因为您只需要了解服务器上发生的事情。我们的材料和实验室将帮助您开发一些核心知识和技能，您将一次又一次地依赖这些知识和技能。
 
-### - [SQL注入](0-server-side-topics/0-sql-injection/README.md)
+- ### [SQL注入](0-server-side-topics/0-sql-injection/README.md)
 ### 身份验证
 ### 目录遍历
 ### OS命令注入
