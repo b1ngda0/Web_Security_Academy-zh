@@ -35,7 +35,7 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 ### DNS检查
 
-### 带
+### 带数据
 
 
 
