@@ -5,6 +5,7 @@
 > * 原始链接：[https://portswigger.net/web-security/](https://portswigger.net/web-security/)
 > * 原作者：[PortSwigger](https://portswigger.net/)
 > * 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
+> * GitHub：[https://github.com/FanqXu/Web\_Security\_Academy-zh](https://github.com/FanqXu/Web_Security_Academy-zh)
 > * 时间：2021-04-04
 > * 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
