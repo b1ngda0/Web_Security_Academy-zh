@@ -4,7 +4,7 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 # 在SQL注入攻击中检查数据库
 
-当利用 SQL 注入利用时，收集数据库本身的信息通常是必要的。这包括数据库软件的类型和版本，还包括数据库中包含的表和列等内容。
+当利用 [SQL 注入](https://portswigger.net/web-security/sql-injection)漏洞时，收集数据库本身的信息通常是必要的。这包括数据库软件的类型和版本，还包括数据库中包含的表和列等内容。
 
 ### 查询数据库类型和版本
 
