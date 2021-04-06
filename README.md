@@ -9,7 +9,7 @@
 > * 时间：2021-04-04
 > * 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-![Cover](.gitbook/assets/cover.jpg)
+![](.gitbook/assets/cover.jpg)
 
 ## 0x00 阅读方式
 
