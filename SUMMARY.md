@@ -13,7 +13,7 @@
   * [SQL盲注](0-server-side-topics/0-sql-injection/4-blind.md)
   * [SQL注入备忘单](0-server-side-topics/0-sql-injection/5-cheat-sheet.md)
 * [身份验证](0-server-side-topics/1-authentication/README.md)
-  * [身份验证漏洞](0-server-side-topics/1-authentication/1-authentication.md)
+  * [认证漏洞](0-server-side-topics/1-authentication/1-authentication.md)
   * [基于密码的登录中的漏洞](0-server-side-topics/1-authentication/2-password-based.md)
   * [多因素身份验证中的漏洞](0-server-side-topics/1-authentication/3-multi-factor.md)
   * [其他身份验证机制中的漏洞](0-server-side-topics/1-authentication/4-other-mechanisms.md)
