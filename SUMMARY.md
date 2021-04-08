@@ -17,7 +17,7 @@
   * [基于密码的登录中的漏洞](0-server-side-topics/1-authentication/2-password-based.md)
   * [多因素身份验证中的漏洞](0-server-side-topics/1-authentication/3-multi-factor.md)
   * [其他身份验证机制中的漏洞](0-server-side-topics/1-authentication/4-other-mechanisms.md)
-  * [如何保护您的身份验证机制](0-server-side-topics/1-authentication/5-securing.md)
+  * [如何保护您的认证机制](0-server-side-topics/1-authentication/5-securing.md)
 * [目录遍历](0-server-side-topics/2-file-path-traversal.md)
 * [操作系统命令注入](0-server-side-topics/3-os-command-injection.md)
 * [业务逻辑漏洞](0-server-side-topics/4-logic-flaws/README.md)

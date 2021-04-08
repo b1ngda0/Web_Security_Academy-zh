@@ -67,13 +67,15 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 如果你喜欢黑客认证机制，在完成我们的主认证实验室后，更多的高级用户可能会想尝试并解决我们的OAuth认证实验室。
 
-
+> 阅读更多
+>
+> {% page-ref page="../../2-advanced-topics/5-oauth/1-oauth.md" %}
 
 ### 防止对自己的认证机制的攻击
 
 我们已经展示了几种网站由于如何实现认证而变得脆弱的方式。为了减少你自己的网站受到这种攻击的风险，有几个一般原则是你应该始终努力遵循的。
 
-
-
-
+> 阅读更多
+>
+> {% page-ref page="5-securing.md" %}
 
