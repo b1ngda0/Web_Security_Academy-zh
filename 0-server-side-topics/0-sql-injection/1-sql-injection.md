@@ -14,10 +14,6 @@ SQL 注入是一种 Web 安全漏洞，它允许攻击者干扰应用程序的�
 
 在一些情况下，攻击者还可以升级 SQL 注入攻击来破坏基础服务器或其他后端基础结构，或者执行拒绝服务攻击。
 
-{% embed url="https://d21v5rjx8s17cr.cloudfront.net/web-security/videos/sql-injection/mp4/1080p.mp4" %}
-
-
-
 {% embed url="https://www.youtube.com/watch?v=wX6tszfgYp4" %}
 
 ## 一次成功的SQL注入有什么影响
