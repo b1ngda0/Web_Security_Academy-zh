@@ -48,7 +48,7 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
 * 所有字段数据（\*）
 * 从 products 表中查询
-* 产品类型是 Gifts
+* 产品类别是 Gifts
 * released 值为1
 
 `released = 1`的限制是为了将未发布的产品隐藏起来。对于未发布的产品，想必`released = 0`。
@@ -65,35 +65,35 @@ https://insecure-website.com/products?category=Gifts'--
 SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
 ```
 
-这里的关键是 '--' 是 SQL 的注释符，剩余的查询条件被注释了。这有效删除了查询其余部分，因此不再包含'AND released = 1' 这个条件。这也就是说所有的产品都会被显示，包括未发布的产品。
+这里的关键是，双破折号`--`在 SQL 中是一个注释符，意味着剩余的查询条件被注释了。这有效地删除了查询的其余部分，因此不再包含`AND released = 1`这个条件。这也就是说所有的产品都会被显示，包括未发布的产品。
 
-更进一步，攻击者可以造成应用程序展示任意类别的所有产品，包括攻击者未知的类别，手法如下：
+更进一步，攻击者可以造成应用程序显示任意类别的所有产品，包括攻击者未知的类别：
 
 ```text
 https://insecure-website.com/products?category=Gifts'+OR+1=1--
 ```
 
-这导致执行如下 SQL 查询：
+这导致如下 SQL 查询：
 
-```text
-SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+```sql
+SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 ```
 
-修改后的查询将返回类别为'Gifts' 或 '1=1' 的所有项。由于 '1 = 1' 始终为 true，因此查询将返回所有项目。
+修改后的查询将返回所有类别为 Gifts 或1等于1的所有商品。由于`1 = 1`始终为真，因此查询将返回所有商品。
 
 {% hint style="warning" %}
-实验：[https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
+实验：[WHERE子句中存在SQL注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
 {% endhint %}
 
-## 颠覆应用逻辑
+## 颠覆应用程序逻辑
 
-考虑存在一个允许用户使用用户名和密码登录的应用程序。如果一个用户提交了 wiener 的用户名和 bluecheese 的密码，应用程序会执行以下的 SQL 查询来检查凭据：
+考虑存在一个允许用户使用用户名和密码登录的应用程序。如果一个用户提交了`wiener`的用户名和`bluecheese`的密码，应用程序会执行以下的 SQL 查询来检查凭据：
 
-```text
-SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
+```sql
+SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
 ```
 
-如果查询返回了用户的详情信息，就会成功登录，否则就登录失败。
+如果查询返回了用户的详情信息，就会成功登录。否则就登录失败。
 
 这里，攻击者可以通过简单地利用 SQL '--' 注释符从 WHERE 子句中删除密码检查，从而不用密码就可以任意用户登录系统。例如，提交用户名 administrator'-- 和空密码将执行如下 SQL 语句：
 
