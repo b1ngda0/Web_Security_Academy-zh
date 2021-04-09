@@ -32,26 +32,26 @@ SQL 注入是一种 Web 安全漏洞，它允许攻击者干扰应用程序的�
 
 ## 检索隐藏数据
 
-考虑一个显示不同类别产品的购物应用程序。当用户点击 ‘Gifts’ 类别时，浏览器发出如下 URL 请求：
+考虑一个显示不同类别产品的购物应用程序。当用户点击 Gifts 类别时，浏览器请求如下 URL：
 
 ```text
 https://insecure-website.com/products?category=Gifts
 ```
 
-这会使应用程序执行 SQL 查询，从数据库中检索相关产品的详细信息：
+这将导致应用程序执行 SQL 查询，从数据库中检索相关产品的详细信息：
 
-```text
+```sql
 SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 ```
 
-这句 SQL 查询要求数据库返回：
+这个 SQL 查询要求数据库返回：
 
-* 所有字段数据 \(\*\)
+* 所有字段数据（\*）
 * 从 products 表中查询
 * 产品类型是 Gifts
-* released 值为 1
+* released 值为1
 
-released = 1 的限制是为了将未发布的产品隐藏起来。对于未发布的产品，想必 released = 0。
+`released = 1`的限制是为了将未发布的产品隐藏起来。对于未发布的产品，想必`released = 0`。
 
 该应用程序未对 SQL 注入攻击采取任何防御措施，因此攻击者可以构造如下攻击：
 
@@ -59,9 +59,9 @@ released = 1 的限制是为了将未发布的产品隐藏起来。对于未发�
 https://insecure-website.com/products?category=Gifts'--
 ```
 
-这导致执行如下 SQL 查询：
+这导致执行 SQL 查询：
 
-```text
+```sql
 SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
 ```
 
