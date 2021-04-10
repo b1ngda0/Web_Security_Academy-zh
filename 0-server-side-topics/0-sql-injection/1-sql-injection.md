@@ -95,84 +95,86 @@ SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
 
 如果查询返回了用户的详情信息，就会成功登录。否则就登录失败。
 
-这里，攻击者可以通过简单地利用 SQL '--' 注释符从 WHERE 子句中删除密码检查，从而不用密码就可以任意用户登录系统。例如，提交用户名 administrator'-- 和空密码将执行如下 SQL 语句：
+这里，攻击者可以通过简单地利用 SQL 注释符`--`从 WHERE 子句中删除密码检查，从而不用密码登录任意用户。例如，提交用户名`administrator'--`和空密码将执行如下 SQL 语句：
 
-```text
-SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+```sql
+SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 ```
 
-这条语句将导致攻击者以 administrator 用户成功登录系统。
+该查询返回用户名为administrator的用户，并成功地将攻击者作为该用户登录。
 
 {% hint style="warning" %}
-实验：[https://portswigger.net/web-security/sql-injection/lab-login-bypass](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
+实验：[SQL注入漏洞允许登录绕过](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
 {% endhint %}
 
 ## 从其他库表检索数据
 
-如果在应用程序的响应中返回了 SQL 的查询结果，则攻击者可以利用 SQL 注入漏洞从数据库的其他表中检索数据。这是通过 UNION 关键字实现的，它可以执行外带的 SQL 查询，并将结果追加到原始查询中。
+在应用程序的响应中返回了 SQL 查询结果的情况下，攻击者可以利用 SQL 注入漏洞从数据库的其他表中检索数据。这是通过`UNION`关键字实现的，它可以执行一个额外的`SELECT`查询，并将结果追加到原始查询中。
 
-例如，一个应用程序执行如下包含用户输入'Gifts' 内容的查询：
+例如，一个应用程序执行如下包含用户输入"Gifts"的查询：
 
-```text
-SELECT name, description FROM products WHERE category = 'Gifts'
+```sql
+SELECT name, description FROM products WHERE category = 'Gifts'
 ```
 
 然后攻击者提交如下输入内容：
 
-```text
+```sql
 ' UNION SELECT username, password FROM users--
 ```
 
-这将导致应用程序返回所有用户名和密码以及产品名称和描述。
+这将导致应用程序返回所有的用户名和密码以及产品的名称和描述。
 
-> 阅读更多：
->
-> {% page-ref page="2-union-attacks.md" %}
+阅读更多：
+
+{% page-ref page="2-union-attacks.md" %}
 
 ## 检查数据库
 
-在初步识别出 SQL 注入漏洞后，获取数据库本身的一些信息通常特别有用。这些信息可以为进一步的利用铺平道路。
+在初步识别出 SQL 注入漏洞后，获取数据库本身的一些信息通常特别有用。这些信息通常可以为进一步的利用铺平道路。
 
-我们可以查询数据库版本的详细信息。查询操作取决于数据库的类型，因此我们可以通过任一查询手段推断出数据库类型。例如，在 Oracle 中，我们可以执行：
+你可以查询数据库版本的详细信息。查询操作取决于数据库的类型，因此你可以通过任一技术手段推断出数据库类型。例如，在 Oracle 中你可以执行：
 
-```text
-SELECT * FROM v$version
+```sql
+SELECT * FROM v$version
 ```
 
-我们还可以确定存在哪些数据库表以及包含哪些列。例如，大多数数据库，我们可以执行以下查询列出表：
+你还可以确定哪些数据库表存在以及包含哪些列。例如，大多数数据库，你可以执行以下查询列出表：
 
-```text
-SELECT * FROM information_schema.tables
+```sql
+SELECT * FROM information_schema.tables
 ```
 
-> 阅读更多：
->
-> {% page-ref page="3-examining-the-database.md" %}
->
-> {% page-ref page="5-cheat-sheet.md" %}
+阅读更多：
+
+{% page-ref page="3-examining-the-database.md" %}
+
+{% page-ref page="5-cheat-sheet.md" %}
 
 ## SQL盲注漏洞
 
-SQL 注入的许多实例都是盲注漏洞。这意味着应用程序不会再响应中返回结果集或者数据库错误的细节信息。我们仍可利用盲注漏洞访问未授权的数据，但是所设计的技术通常更复杂且难以执行。
+SQL 注入的许多实例都是盲注漏洞。这意味着应用程序不会在其响应中返回 SQL 查询的结果或任何数据库错误的细节。盲注漏洞仍然可以被利用来访问未经授权的数据，但涉及的技术通常更复杂，难以执行。
 
-根据漏洞的性质和所涉及的数据库，可以利用以下技术来利用盲注漏洞：
+根据漏洞的性质和所涉及的数据库，可以使用以下技术来利用 SQL 盲注漏洞：
 
-* 我们可以更改查询的逻辑，根据单个条件的真实性触发应用程序响应中可检测到的差异。这可能涉及向某个 boolean 逻辑中注入新条件，或者有条件触发诸如 divide-by-zero 之类的错误；
-* 我们也可以有条件地触发查询处理中的时间延迟，然后从应用程序响应时间上来判断条件是否生效；
-* 我们可以使用 [OAST](https://portswigger.net/burp/application-security-testing/oast) 技术触发带外网络交互。该技术非常强大，可以在其他技术无法使用的情况下使用。通常，我们可以直接通过带外通道泄露数据，例如，将数据放入控制的域的 DNS 中查找。
+* 你可以改变查询的逻辑，根据单个条件的真假来触发应用程序响应中可检测到的差异。这可能涉及到在一些布尔逻辑中注入一个新的条件，或者有条件地触发一个诸如 divide-by-zero 之类的错误。
+* 你也可以有条件地触发查询处理中的时间延迟，然后从应用程序响应时间上来判断条件是否生效；
+* 你可以使用 [OAST](https://portswigger.net/burp/application-security-testing/oast) 技术触发带外网络交互。该技术非常强大，可以在其他技术无法做到的情况下发挥作用。通常，你可以直接通过带外通道泄露数据，例如，将数据放入你控制的域的 DNS 查询中。
 
-> 阅读更多：
->
-> {% page-ref page="4-blind.md" %}
+阅读更多：
+
+{% page-ref page="4-blind.md" %}
 
 ## 如何检测SQL注入漏洞
 
-使用 [Burp Suite的Web漏洞扫描器](https://portswigger.net/burp/vulnerability-scanner) 可以快速、可靠地检测大多数 SQL 注入漏洞。
+使用 Burp Suite 的 [Web漏洞扫描器](https://portswigger.net/burp/vulnerability-scanner) 可以快速、可靠地检测大多数 SQL 注入漏洞。
 
-可以通过针对应用程序中的每个入口点使用系统化的测试集来手动检测 SQL 注入。这通常涉及：
+通过对应用程序中的每个入口点使用系统化的测试集来手动检测 SQL 注入。
+
+这通常涉及：
 
 * 提交单引号字符 ' 并查找错误或其他异常
-* 提交一些特定于 SQL 的语法，该语法的评估结果为入口点的基础（原始）值和其他值，并在最终的应用程序响应中寻找系统差异
+* 提交一些特定的 SQL 语法，对入口点的基础（原始）值和其他值进行评估，并在最终的应用程序响应中寻找系统差异
 * 提交 boolean 条件，例如 OR 1=1 和 OR 1=2，并查找应用程序响应中的差异
 * 提交旨在在 SQL 查询中执行时触发时间延迟的有效负载，并寻找响应时间的差异
 * 提交旨在在 SQL 查询中执行时触发带外网络交互的 OAST 有效负载，并监视所有结果交互
