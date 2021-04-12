@@ -4,15 +4,15 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 # SQL注入UNION攻击
 
-当应用程序容易受到 SQL 注入攻击，并且查询结果在应用程序的响应中返回时，可使用 UNION 关键字从数据库的其他表检索数据。这就导致了 UNION 注入攻击。
+当应用程序容易受到 SQL 注入攻击，并且查询结果在应用程序的响应中返回时，可使用`UNION`关键字从数据库的其他表检索数据。这就导致了 UNION 注入攻击。
 
-UNION 关键字可以一条或者多条额外的 SELECT 查询，并将结果追加到原始查询中。例如：
+`UNION`关键字可以一条或者多条额外的`SELECT`查询，并将结果追加到原始查询中。例如：
 
-```text
+```sql
 SELECT a, b FROM table1 UNION SELECT c, d FROM table2
 ```
 
-该查询将返回包含两列的单个结果集，其中包含 table1 的 a、b 字段和 table2 的 c、d 字段。
+该查询将返回包含两列的单个结果集，其中包含`table1`的`a`、`b`字段和`table2`的 c、d 字段。
 
 为使 UNION 查询正常工作，必须满足两个关键要求：
 
@@ -30,7 +30,7 @@ SELECT a, b FROM table1 UNION SELECT c, d FROM table2
 
 第一种方法涉及注入一系列的 ORDER BY 子句并递增指定的列索引，指到发生错误。例如，假设注入点是原始查询的 WHERE 子句中带引号的字符串，则可以提交：
 
-```text
+```sql
 ' ORDER BY 1--
 ' ORDER BY 2--
 ' ORDER BY 3--
@@ -47,7 +47,7 @@ The ORDER BY position number 3 is out of range of the number of items in the sel
 
 第二种方法涉及提交一系列的包含不同数量 NULL 值的 UNION SELECT 攻击载荷：
 
-```text
+```sql
 ' UNION SELECT NULL--
 ' UNION SELECT NULL,NULL--
 ' UNION SELECT NULL,NULL,NULL--
