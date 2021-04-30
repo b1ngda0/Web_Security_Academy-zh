@@ -76,21 +76,23 @@ https://insecure-website.com/products?category=Gifts'+OR+1=1--
 这导致如下 SQL 查询：
 
 ```sql
-SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+
 ```
 
 修改后的查询将返回所有类别为 Gifts 或1等于1的所有商品。由于`1 = 1`始终为真，因此查询将返回所有商品。
 
 {% hint style="warning" %}
-实验：[WHERE子句中存在SQL注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
+实验：[WHERE 子句中存在 SQL 注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
 {% endhint %}
 
 ## 颠覆应用程序逻辑
 
-考虑存在一个允许用户使用用户名和密码登录的应用程序。如果一个用户提交了`wiener`的用户名和`bluecheese`的密码，应用程序会执行以下的 SQL 查询来检查凭据：
+考虑存在一个允许用户使用用户名和密码登录的应用程序。如果一个用户提交了 `wiener` 的用户名和 `bluecheese` 的密码，应用程序会执行以下的 SQL 查询来检查凭据：
 
 ```sql
-SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
+SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
+
 ```
 
 如果查询返回了用户的详情信息，就会成功登录。否则就登录失败。
@@ -98,13 +100,14 @@ SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
 这里，攻击者可以通过简单地利用 SQL 注释符`--`从 WHERE 子句中删除密码检查，从而不用密码登录任意用户。例如，提交用户名`administrator'--`和空密码将执行如下 SQL 语句：
 
 ```sql
-SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+
 ```
 
-该查询返回用户名为administrator的用户，并成功地将攻击者作为该用户登录。
+该查询返回用户名为 administrator 的用户，并成功地将攻击者作为该用户登录。
 
 {% hint style="warning" %}
-实验：[SQL注入漏洞允许登录绕过](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
+实验：[SQL 注入漏洞允许登录绕过](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
 {% endhint %}
 
 ## 从其他库表检索数据
@@ -114,7 +117,8 @@ SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 例如，一个应用程序执行如下包含用户输入"Gifts"的查询：
 
 ```sql
-SELECT name, description FROM products WHERE category = 'Gifts'
+SELECT name, description FROM products WHERE category = 'Gifts'
+
 ```
 
 然后攻击者提交如下输入内容：
@@ -136,13 +140,15 @@ SELECT name, description FROM products WHERE category = 'Gifts'
 你可以查询数据库版本的详细信息。查询操作取决于数据库的类型，因此你可以通过任一技术手段推断出数据库类型。例如，在 Oracle 中你可以执行：
 
 ```sql
-SELECT * FROM v$version
+SELECT * FROM v$version
+
 ```
 
 你还可以确定哪些数据库表存在以及包含哪些列。例如，大多数数据库，你可以执行以下查询列出表：
 
 ```sql
-SELECT * FROM information_schema.tables
+SELECT * FROM information_schema.tables
+
 ```
 
 阅读更多：
@@ -177,13 +183,13 @@ SQL 注入的许多实例都是盲注漏洞。这意味着应用程序不会在�
 * 提交一些特定的 SQL 语法，对入口点的基础（原始）值和其他值进行评估，并在最终的应用程序响应中寻找系统差异 。
 * 提交例如`OR 1=1`和`OR 1=2`的布尔条件，并查找应用程序响应中的差异。
 * 当在 SQL 查询中执行时，提交设计用于触发时间延迟的 payloads，并寻找响应时间的差异。
-* 当在SQL查询中执行时，提交OAST payloads，以触发带外网络交互，并监控任何结果的交互。
+* 当在 SQL 查询中执行时，提交 OAST payloads，以触发带外网络交互，并监控任何结果的交互。
 
 ## 在查询不同部分中的SQL注入
 
 大多数 SQL 注入漏洞都出现在`SELECT`查询的`WHERE`子句中。这类 SQL 注入通常被经验丰富的测试人员很好地理解。
 
-但是SQL注入漏洞原则上可以发生在查询中的任何位置，也可以发生在不同的查询类型中。发生 SQL 注入的最常见其他位置是：
+但是 SQL 注入漏洞原则上可以发生在查询中的任何位置，也可以发生在不同的查询类型中。发生 SQL 注入的最常见其他位置是：
 
 * 在`UPDATE`语句中，更新的值或`WHERE`子句中。
 * 在`INSERT`语句中，插入的值内。
@@ -231,9 +237,9 @@ ResultSet resultSet = statement.executeQuery(query);
 可以通过防止用户输入干扰查询结构的方式轻松重写此代码：
 
 ```text
-PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
-statement.setString(1, input);
-ResultSet resultSet = statement.executeQuery();
+PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
+statement.setString(1, input);
+ResultSet resultSet = statement.executeQuery();
 ```
 
 参数化查询可用于不受信任的输入作为查询中显示为数据的任何情况，包括`WHERE`子句和`INSERT`或`UPDATE`语句中的值。它们不能用于处理查询其他部分中不可信任的输入，例如表或列名或`ORDER BY`子句。将不受信任的数据放入查询的这些部分的应用程序功能需要采用不同的方法，例如将允许的输入值列入白名单，或者使用不同的逻辑来传递所需的行为。
