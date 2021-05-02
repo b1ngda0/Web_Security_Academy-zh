@@ -24,7 +24,7 @@ SELECT a, b FROM table1 UNION SELECT c, d FROM table2
 * 原始查询中返回了多少列？
 * 从原始查询返回的哪些列具有合适的数据类型以保存注入查询的结果？
 
-### 确定SQL注入UNION攻击中所需的列数
+## 确定SQL注入UNION攻击中所需的列数
 
 当执行 SQL 注入 UNION 攻击时，有两种有效的方法可以确定从原始查询返回了多少列。
 
@@ -70,14 +70,13 @@ All queries combined using a UNION, INTERSECT or EXCEPT operator must have an eq
 
 > **Note**
 >
-> - 使用 `NULL` 作为从注入的 `SELECT` 查询返回的值的原因是，每一列的数据类型在原始查询和注入查询之间必须兼容。由于 `NULL` 可以转换为每种常用的数据类型，因此当列数正确时，使用 `NULL` 可以最大程度的提高 payload 成功的机会。
-> - 在 Oracle 中，`SELECT` 查询必须使用 `FROM` 关键字并指定一个有效表，Oracle 中有一个内置表 `dual`，可用于此目的。因此在 Oracle 中注入的查询语句类似于：`' UNION SELECT NULL FROM DUAL--`。
->
-> - 所描述的 payloads 使用双破折号 -- 注释掉注入点后原始查询的其余部分。在 Mysql 中，双破折号后面必须有一个空格。另外，哈希符号 \# 可用于标识注释。
+> * 使用 `NULL` 作为从注入的 `SELECT` 查询返回的值的原因是，每一列的数据类型在原始查询和注入查询之间必须兼容。由于 `NULL` 可以转换为每种常用的数据类型，因此当列数正确时，使用 `NULL` 可以最大程度的提高 payload 成功的机会。
+> * 在 Oracle 中，`SELECT` 查询必须使用 `FROM` 关键字并指定一个有效表，Oracle 中有一个内置表 `dual`，可用于此目的。因此在 Oracle 中注入的查询语句类似于：`' UNION SELECT NULL FROM DUAL--`。
+> * 所描述的 payloads 使用双破折号 -- 注释掉注入点后原始查询的其余部分。在 Mysql 中，双破折号后面必须有一个空格。另外，哈希符号 \# 可用于标识注释。
 >
 > 有关特定数据库语法的更多详细信息, 请参见 [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-### UNION注入攻击中查找具有有效数据类型的列
+## UNION注入攻击中查找具有有效数据类型的列
 
 执行 SQL 注入 UNION 攻击的原因是为了能够从注入的查询中检索出结果。通常，你想检索的有趣数据将是字符串形式的，因此就需要在原始查询结果中查找数据类型为字符串数据或与之兼容的一个或更多列。
 
@@ -102,7 +101,7 @@ Conversion failed when converting the varchar value 'a' to data type int.
 **实验：**[SQL 注入 UNION 攻击，查找包含文本的列](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text)
 {% endhint %}
 
-### 使用UNION注入攻击检索感兴趣的数据
+## 使用UNION注入攻击检索感兴趣的数据
 
 当你确定了原始查询所返回列的列数，并找到哪一列可以兼容字符串时，就可以从这个位置检索感兴趣的数据。
 
@@ -128,7 +127,7 @@ Conversion failed when converting the varchar value 'a' to data type int.
 >
 > [在 SQL 注入攻击中检查数据库](https://portswigger.net/web-security/sql-injection/examining-the-database)
 
-### 在单列中检索多个值
+## 在单列中检索多个值
 
 在前面的示例中，假设查询仅返回单个列。
 

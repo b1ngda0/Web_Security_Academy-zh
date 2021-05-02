@@ -9,7 +9,7 @@
 * [SQL注入](0-server-side-topics/0-sql-injection/README.md)
   * [SQL注入](0-server-side-topics/0-sql-injection/1-sql-injection.md)
   * [SQL注入UNION攻击](0-server-side-topics/0-sql-injection/2-union-attacks.md)
-  * [在SQL注入攻击中检查数据库](0-server-side-topics/0-sql-injection/3-examining-the-database.md)
+  * [在SQL注入攻击中检索数据库](0-server-side-topics/0-sql-injection/3-examining-the-database.md)
   * [SQL盲注](0-server-side-topics/0-sql-injection/4-blind.md)
   * [SQL注入备忘单](0-server-side-topics/0-sql-injection/5-cheat-sheet.md)
 * [身份验证](0-server-side-topics/1-authentication/README.md)

@@ -6,13 +6,13 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 在本节中，我们将描述什么是 SQL 盲注漏洞，并解释发现和利用 SQL 盲注漏洞的各种技术。
 
-### 什么是SQL盲注？
+## 什么是SQL盲注？
 
 SQL 盲注是指当应用程序容易受到 SQL 注入的攻击，但其 HTTP 响应不包含相关的 SQL 查询结果或任何数据库错误的细节。
 
 对于 SQL 盲注漏洞，许多诸如 [UNION 攻击](https://portswigger.net/web-security/sql-injection/union-attacks)之类的技术都不会起作用，这是因为这些技术都依赖于应用程序响应中返回注入查询结果。但是仍然可以利用 SQL 盲注访问未授权数据，只是必须采用不同的技术。
 
-### 通过触发条件响应来利用SQL盲注
+## 通过触发条件响应来利用SQL盲注
 
 考虑存在一个使用追踪 cookies 来收集和分析使用情况的应用程序。对该应用程序的请求包括一个像这样的 cookie 标头：
 
@@ -71,11 +71,11 @@ xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator')
 实验：[带条件响应的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
 {% endhint %}
 
-### 通过触发SQL错误来诱导条件响应
+## 通过触发SQL错误来诱导条件响应
 
 在前面的示例中，假设应用程序即使执行不同的 SQL 查询，但是根据查询返回的任何数据在行为上判断都没有不同点。这样前面的技术就失效了，因为注入不同的布尔条件不会影响应用程序的响应。
 
-在这种情况下，通常可以根据注入条件，选择性触发 SQL 错误来诱使应用程序返回条件响应。这涉及修改查询，以便在条件为真时引起数据库错误，而条件为假时则不会导致数据库错误。通常，数据库引发的未处理错误会导致应用程序响应有所不同（如错误信息），从而能使我们能够推断出注入条件的真实性。 
+在这种情况下，通常可以根据注入条件，选择性触发 SQL 错误来诱使应用程序返回条件响应。这涉及修改查询，以便在条件为真时引起数据库错误，而条件为假时则不会导致数据库错误。通常，数据库引发的未处理错误会导致应用程序响应有所不同（如错误信息），从而能使我们能够推断出注入条件的真实性。
 
 要查看其工作原理，假设有两个请求被发送，这些请求依次包含以下 `TrackingId` cookie 值：
 
@@ -100,7 +100,7 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 实验：[带条件错误的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
 {% endhint %}
 
-### 通过触发时间延时来利用SQL盲注
+## 通过触发时间延时来利用SQL盲注
 
 在前面的示例中，假设应用程序现在捕获到数据库错误并妥善地处理它们。当执行注入的 SQL 查询时，触发数据库错误不再导致应用程序响应中的任何差异，因此导致条件错误的上述技术将不起作用。
 
@@ -133,7 +133,7 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 实验：[带时间延迟和信息检索的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
 {% endhint %}
 
-### 使用带外技术（OAST）利用SQL盲注
+## 使用带外技术（OAST）利用SQL盲注
 
 现在，假设应用程序执行相同的 SQL 查询，但是采用异步方式处理。应用程序继续使用原始线程处理用户请求，并使用另一个线程执行使用追踪 cookie 的 SQL 查询。该查询依然容易受到 SQL 注入的攻击，但是到目前为止所介绍的技术都不起作用：应用程序的响应并不取决于查询是否返回任何数据，也不取决于数据库是否发生错误，更不取决于执行查询所花费的时间。
 
@@ -183,7 +183,7 @@ S3cure.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net
 实验：[带外数据渗出的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration)
 {% endhint %}
 
-### 如何防止SQL盲注攻击
+## 如何防止SQL盲注攻击
 
 尽管发现和利用 SQL 盲注漏洞所需的技术与普通的 SQL 注入相比有所不同且更为复杂，但是无论该漏洞是否为盲注，防止 SQL 注入所需的措施都是一样的。
 

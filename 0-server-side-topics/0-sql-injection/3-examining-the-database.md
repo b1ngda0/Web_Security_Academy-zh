@@ -6,17 +6,17 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 当利用 [SQL 注入](https://portswigger.net/web-security/sql-injection)漏洞时，收集数据库本身的信息通常是必要的。这包括数据库软件的类型和版本，还包括数据库中包含的表和列等内容。
 
-### 查询数据库类型和版本
+## 查询数据库类型和版本
 
 不同的数据库提供不同的版本查询方式。你通常需要尝试不同的查询方式，以找到一个有效的查询方式，能够确定数据库软件的类型和版本。
 
 用于确定某些常用数据库类型的数据库版本的查询如下：
 
-| 数据库类型       | 查询                      |
-| :--------------- | :------------------------ |
-| Microsoft, MySQL | `SELECT @@version`        |
-| Oracle           | `SELECT * FROM v$version` |
-| PostgreSQL       | `SELECT version()`        |
+| 数据库类型 | 查询 |
+| :--- | :--- |
+| Microsoft, MySQL | `SELECT @@version` |
+| Oracle | `SELECT * FROM v$version` |
+| PostgreSQL | `SELECT version()` |
 
 例如，你可以使用带有下边的 `UNION` 攻击：
 
@@ -41,7 +41,7 @@ Standard Edition (64-bit) on Windows Server 2016 Standard 10.0 <X64> (Build 1439
 **实验：**[SQL 注入攻击，在 MySQL 和微软中查询数据库类型和版本](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft)
 {% endhint %}
 
-### 列出数据库的内容
+## 列出数据库的内容
 
 大多数数据库类型（Oracle 是个明显的例外）都有一组被称作 information schema 的视图，这些视图提供有关数据库的信息。
 
@@ -85,7 +85,7 @@ MyDatabase    dbo          Users      Password    varchar
 **实验：**[SQL 注入攻击，在非 Oracle 数据库中列出数据库内容](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle)
 {% endhint %}
 
-### 等效于Oracle中的information schema
+## 等效于Oracle中的information schema
 
 在 Oracle 中，你可以通过稍有差异的查询获取同样的信息。
 

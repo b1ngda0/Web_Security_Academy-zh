@@ -14,7 +14,7 @@ SQL 注入是一种 Web 安全漏洞，它允许攻击者干扰应用程序的�
 
 在一些情况下，攻击者还可以升级 SQL 注入攻击来破坏基础服务器或其他后端基础结构，或者执行拒绝服务攻击。
 
-{% embed url="https://www.youtube.com/watch?v=wX6tszfgYp4" %}
+{% embed url="https://www.youtube.com/watch?v=wX6tszfgYp4" caption="" %}
 
 ## 一次成功的SQL注入有什么影响
 
@@ -77,7 +77,6 @@ https://insecure-website.com/products?category=Gifts'+OR+1=1--
 
 ```sql
 SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
-
 ```
 
 修改后的查询将返回所有类别为 Gifts 或1等于1的所有商品。由于`1 = 1`始终为真，因此查询将返回所有商品。
@@ -92,7 +91,6 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
 ```sql
 SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
-
 ```
 
 如果查询返回了用户的详情信息，就会成功登录。否则就登录失败。
@@ -101,7 +99,6 @@ SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
 
 ```sql
 SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
-
 ```
 
 该查询返回用户名为 administrator 的用户，并成功地将攻击者作为该用户登录。
@@ -118,7 +115,6 @@ SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 
 ```sql
 SELECT name, description FROM products WHERE category = 'Gifts'
-
 ```
 
 然后攻击者提交如下输入内容：
@@ -141,14 +137,12 @@ SELECT name, description FROM products WHERE category = 'Gifts'
 
 ```sql
 SELECT * FROM v$version
-
 ```
 
 你还可以确定哪些数据库表存在以及包含哪些列。例如，大多数数据库，你可以执行以下查询列出表：
 
 ```sql
 SELECT * FROM information_schema.tables
-
 ```
 
 阅读更多：
