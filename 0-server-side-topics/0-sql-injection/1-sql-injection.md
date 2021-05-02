@@ -27,7 +27,7 @@ SQL 注入是一种 Web 安全漏洞，它允许攻击者干扰应用程序的�
 * 检索隐藏的数据，你可以修改 SQL 查询以返回其他结果。
 * 颠覆应用程序逻辑，你可以更改查询以干扰应用程序逻辑。
 * UNION 攻击，你可以从不同的数据库表中检索数据。
-* 检查数据库，你可以提取数据库的版本和结构信息。
+* 检索数据库，你可以提取数据库的版本和结构信息。
 * SQL 盲注攻击，即在应用程序的响应中不返回你控制的查询结果。
 
 ## 检索隐藏数据
@@ -83,7 +83,7 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 修改后的查询将返回所有类别为 Gifts 或1等于1的所有商品。由于`1 = 1`始终为真，因此查询将返回所有商品。
 
 {% hint style="warning" %}
-实验：[WHERE 子句中存在 SQL 注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
+实验：[WHERE 子句中的 SQL 注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
 {% endhint %}
 
 ## 颠覆应用程序逻辑
@@ -133,7 +133,7 @@ SELECT name, description FROM products WHERE category = 'Gifts'
 
 {% page-ref page="2-union-attacks.md" %}
 
-## 检查数据库
+## 检索数据库
 
 在初步识别出 SQL 注入漏洞后，获取数据库本身的一些信息通常特别有用。这些信息通常可以为进一步的利用铺平道路。
 
