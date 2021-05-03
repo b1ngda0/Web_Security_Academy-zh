@@ -1,3 +1,7 @@
+---
+description: '原文链接：https://portswigger.net/web-security/os-command-injection'
+---
+
 # 操作系统命令注入
 
 ## 什么是OS命令注入？
