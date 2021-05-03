@@ -14,7 +14,7 @@
   * [SQL注入备忘单](0-server-side-topics/0-sql-injection/5-cheat-sheet.md)
 * [身份认证](0-server-side-topics/1-authentication/README.md)
   * [认证漏洞](0-server-side-topics/1-authentication/1-authentication.md)
-  * [基于密码的登录中的漏洞](0-server-side-topics/1-authentication/2-password-based.md)
+  * [基于密码登录中的漏洞](0-server-side-topics/1-authentication/2-password-based.md)
   * [多因素身份验证中的漏洞](0-server-side-topics/1-authentication/3-multi-factor.md)
   * [其他身份验证机制中的漏洞](0-server-side-topics/1-authentication/4-other-mechanisms.md)
   * [如何保护你的认证机制](0-server-side-topics/1-authentication/5-securing.md)
