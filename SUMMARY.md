@@ -19,7 +19,7 @@
   * [其他身份验证机制中的漏洞](0-server-side-topics/1-authentication/4-other-mechanisms.md)
   * [如何保护你的认证机制](0-server-side-topics/1-authentication/5-securing.md)
 * [目录遍历](0-server-side-topics/2-file-path-traversal.md)
-* [操作系统命令注入](0-server-side-topics/3-os-command-injection.md)
+* [OS命令注入](0-server-side-topics/3-os-command-injection.md)
 * [业务逻辑漏洞](0-server-side-topics/4-logic-flaws/README.md)
   * [业务逻辑漏洞](0-server-side-topics/4-logic-flaws/1-logic-flaws.md)
   * [业务逻辑漏洞示例](0-server-side-topics/4-logic-flaws/2-logic-flaws-examples.md)
