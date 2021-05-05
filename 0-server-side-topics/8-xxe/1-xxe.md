@@ -54,7 +54,7 @@ Invalid product ID: root:x:0:0:root:/root:/bin/bashdaemon:x:1:1:daemon:/usr/sbin
 
 借助实际的XXE漏洞，提交的XML中通常会存在大量数据值，其中任何一个都可以在应用程序的响应中使用。 为了系统地测试XXE漏洞，通常将需要通过使用定义的实体并查看其是否出现在响应中来分别测试XML中的每个数据节点。
 
-**实验室**[使用外部实体来利用XXE来检索文件](javascript:;)
+**实验室**使用外部实体来利用XXE来检索文件
 
 ## 利用XXE执行SSRF攻击
 
@@ -68,7 +68,7 @@ Invalid product ID: root:x:0:0:root:/root:/bin/bashdaemon:x:1:1:daemon:/usr/sbin
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://internal.vulnerable-website.com/"> ]>
 ```
 
-**实验室**[利用XXE执行SSRF攻击](javascript:;)
+**实验室**利用XXE执行SSRF攻击
 
 ## XXE盲漏洞
 
@@ -92,7 +92,7 @@ XXE漏洞的许多实例都是盲目的。 这意味着应用程序不会在其�
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>
 ```
 
-**实验室**[利用XInclude检索文件](javascript:;)
+**实验室**利用XInclude检索文件
 
 ### 通过文件上传进行XXE攻击
 
@@ -100,7 +100,7 @@ XXE漏洞的许多实例都是盲目的。 这意味着应用程序不会在其�
 
 例如，一个应用程序可能允许用户上传图像，并在上传后在服务器上处理或验证这些图像。 即使应用程序希望接收PNG或JPEG之类的格式，所使用的图像处理库也可能支持SVG图像。 由于SVG格式使用XML，因此攻击者可以提交恶意的SVG映像，因此可以隐藏攻击面以发现XXE漏洞。
 
-**实验室**[通过上传图像文件来利用XXE](javascript:;)
+**实验室**通过上传图像文件来利用XXE
 
 ### 通过修改的内容类型进行XXE攻击
 

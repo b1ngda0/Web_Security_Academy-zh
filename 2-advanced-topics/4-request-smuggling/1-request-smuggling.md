@@ -91,7 +91,7 @@ Transfer-Encoding: chunked0SMUGGLED
 
 后端服务器处理Transfer-Encoding标头，因此将消息正文视为使用分块编码。 它处理第一个块，该块被声明为零长度，因此被视为终止请求。 接下来的字节SMUGGLED将不予处理，后端服务器会将其视为序列中下一个请求的开始。
 
-**实验室**[HTTP请求走私，基本的CL.TE漏洞](http://portswigger.cn/academy/subpage/allTopics/all-4.html#how-do-http-request-smuggling-vulnerabilities-arise)
+**实验室**HTTP请求走私，基本的CL.TE漏洞
 
 ### TE.CL 漏洞
 
@@ -118,7 +118,7 @@ SMUGGLED
 
 后端服务器处理Content-Length标头，并确定请求正文的长度为3个字节，直到8之后的行的开头。其余字节（从SMUGGLED开始）一直未处理，后端服务器 会将其视为序列中下一个请求的开始。
 
-**实验室**[HTTP请求走私，基本的CL.TE漏洞](http://portswigger.cn/academy/subpage/allTopics/all-4.html#how-do-http-request-smuggling-vulnerabilities-arise)
+**实验室**HTTP请求走私，基本的CL.TE漏洞
 
 ### TE.TE行为：混淆TE标头
 
@@ -141,7 +141,7 @@ Transfer-Encoding: chunked
 
 根据是否诱使前端服务器或后端服务器不处理混淆的Transfer-Encoding标头，其余的攻击将采用之前描述的与CL.TE或TE.CL漏洞相同的形式。
 
-**实验室**[HTTP请求走私，混淆了TE标头](http://portswigger.cn/academy/subpage/allTopics/all-4.html#how-do-http-request-smuggling-vulnerabilities-arise)
+**实验室**HTTP请求走私，混淆了TE标头
 
 ## 如何防止HTTP请求走私漏洞
 

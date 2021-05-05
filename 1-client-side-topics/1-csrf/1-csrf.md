@@ -73,7 +73,7 @@ email=wiener@normal-user.com
 * 您可以在CSRF PoC生成器中调整各种选项，以微调攻击的各个方面。 您可能需要在某些不常见的情况下执行此操作，以处理请求的古怪功能。
 * 将生成的HTML复制到网页中，在登录到易受攻击的网站的浏览器中查看它，并测试是否成功发出了预期的请求并执行了所需的操作。
 
-**实验室**[CSRF漏洞，没有防御措施](javascript:;)
+**实验室**CSRF漏洞，没有防御措施
 
 ## 如何进行CSRF攻击
 
@@ -113,7 +113,7 @@ SameSite cookie是对CSRF部分有效的另一种防御措施，可以与CSRF令
 
 `GET /email/change?email=pwned@evil-user.net HTTP/1.1Host: vulnerable-website.comCookie: session=2yQIDcpia41WrATfjPqvm9tOkDvkMvLm`
 
-**实验室**[CSRF，令牌验证取决于请求方法](javascript:;)
+**实验室**CSRF，令牌验证取决于请求方法
 
 ### CSRF令牌的验证取决于令牌是否存在
 
@@ -123,7 +123,7 @@ SameSite cookie是对CSRF部分有效的另一种防御措施，可以与CSRF令
 
 `POST /email/change HTTP/1.1Host: vulnerable-website.comContent-Type: application/x-www-form-urlencodedContent-Length: 25Cookie: session=2yQIDcpia41WrATfjPqvm9tOkDvkMvLmemail=pwned@evil-user.net`
 
-**实验室**[CSRF，其中令牌验证取决于存在的令牌](javascript:;)
+**实验室**CSRF，其中令牌验证取决于存在的令牌
 
 ### CSRF令牌未绑定到用户会话
 
@@ -131,7 +131,7 @@ SameSite cookie是对CSRF部分有效的另一种防御措施，可以与CSRF令
 
 在这种情况下，攻击者可以使用自己的帐户登录到应用程序，获取有效令牌，然后在其CSRF攻击中将该令牌提供给受害用户。
 
-**实验室**[CSRF，令牌未绑定到用户会话](javascript:;)
+**实验室**CSRF，令牌未绑定到用户会话
 
 ### CSRF令牌绑定到非会话cookie
 
@@ -141,7 +141,7 @@ SameSite cookie是对CSRF部分有效的另一种防御措施，可以与CSRF令
 
 这种情况很难利用，但仍然很脆弱。 如果该网站包含允许攻击者在受害者的浏览器中设置cookie的任何行为，则可能构成攻击。 攻击者可以使用自己的帐户登录应用程序，获取有效的令牌和关联的cookie，利用cookie的设置行为将其cookie放入受害者的浏览器中，并在CSRF攻击中将其令牌提供给受害者。
 
-**实验室**[CSRF，令牌与非会话Cookie绑定在一起](javascript:;)
+**实验室**CSRF，令牌与非会话Cookie绑定在一起
 
 ### CSRF令牌仅在cookie中重复
 
@@ -151,7 +151,7 @@ SameSite cookie是对CSRF部分有效的另一种防御措施，可以与CSRF令
 
 在这种情况下，如果网站包含任何cookie设置功能，则攻击者可以再次执行CSRF攻击。 在这里，攻击者无需获取自己的有效令牌。 他们只是发明了一个令牌（如果正在检查，则可能采用所需的格式），利用cookie设置行为将其cookie置于受害者的浏览器中，并在CSRF攻击中将令牌提供给受害者。
 
-**实验室**[CSRF，其中令牌在cookie中重复](javascript:;)
+**实验室**CSRF，其中令牌在cookie中重复
 
 ## 针对CSRF的基于引用者的防御
 
@@ -167,7 +167,7 @@ HTTP Referer标头（在HTTP规范中无意中拼写错误）是一个可选的�
 
 在这种情况下，攻击者可以以导致受害者用户的浏览器在结果请求中删除Referer标头的方式设计CSRF利用。 有多种方法可以实现此目的，但最简单的方法是在承载CSRF攻击的HTML页面中使用META标签：
 
-**实验室**[CSRF，其中Referer来源验证取决于标头的存在](javascript:;)
+**实验室**CSRF，其中Referer来源验证取决于标头的存在
 
 ### 可以避免Referer的验证
 
@@ -179,5 +179,5 @@ HTTP Referer标头（在HTTP规范中无意中拼写错误）是一个可选的�
 
 `http://vulnerable-website.com.attacker-website.com/csrf-attack`
 
-**实验室**[Referer验证失效的CSRF](javascript:;)
+**实验室**Referer验证失效的CSRF
 

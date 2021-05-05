@@ -16,9 +16,9 @@ WebSocket用于各种目的，包括执行用户操作和传输敏感信息。 �
 
 您可以使用Burp Suite来：
 
-* [拦截和修改WebSocket消息。](http://portswigger.cn/academy/subpage/allTopics/all-8.html#intercepting-and-modifying-websocket-messages)
-* [重播并生成新的WebSocket消息。](http://portswigger.cn/academy/subpage/allTopics/all-8.html#replaying-and-generating-new-websocket-messages)
-* [操纵WebSocket连接。](http://portswigger.cn/academy/subpage/allTopics/all-8.html#manipulating-websocket-connections)
+* 拦截和修改WebSocket消息。
+* 重播并生成新的WebSocket消息。
+* 操纵WebSocket连接。
 
 ### 拦截和修改WebSocket消息
 
@@ -86,7 +86,7 @@ WebSocket用于各种目的，包括执行用户操作和传输敏感信息。 �
 {"message":"<img src=1 onerror='alert(1)'>"}
 ```
 
-**实验室**[处理WebSocket消息以利用漏洞](javascript:;)
+**实验室**处理WebSocket消息以利用漏洞
 
 ### 操纵WebSocket交握以利用漏洞
 
@@ -96,7 +96,7 @@ WebSocket用于各种目的，包括执行用户操作和传输敏感信息。 �
 * 会话处理机制存在缺陷，因为处理WebSocket消息的会话上下文通常由交握消息的会话上下文确定。
 * 应用程序使用的自定义HTTP标头引入的攻击面。
 
-**实验室**[操纵WebSocket交握以利用漏洞](javascript:;)
+**实验室**操纵WebSocket交握以利用漏洞
 
 ### 使用跨站点WebSocket利用漏洞
 

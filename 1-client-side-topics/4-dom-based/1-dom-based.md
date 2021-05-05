@@ -36,7 +36,7 @@ goto = location.hash.slice(1)if(goto.startsWith('https:')) { location = goto;}
 https://www.innocent-website.com/example#https://www.evil-user.net
 ```
 
-当受害者访问此URL时，JavaScript会将location属性的值设置为[https://www.evil-user.net，这将自动将受害者重定向到恶意站点。](https://www.evil-user.net，这将自动将受害者重定向到恶意站点。) 例如，可以很容易地利用此行为来构造网络钓鱼攻击。
+当受害者访问此URL时，JavaScript会将location属性的值设置为https://www.evil-user.net，这将自动将受害者重定向到恶意站点。 例如，可以很容易地利用此行为来构造网络钓鱼攻击。
 
 ### 共同来源
 
@@ -52,22 +52,22 @@ document.URLdocument.documentURIdocument.URLUnencodeddocument.baseURI位置docum
 
 | 基于DOM的漏洞 | 接收器示例 |
 | :--- | :--- |
-| [DOM XSS](javascript:;) LABS | `document.write()` |
-| [开放重定向](javascript:;) LABS | `window.location` |
-| [Cookie操作](javascript:;) LABS | `document.cookie` |
-| [JavaScript注入](javascript:;) | `eval()` |
-| [文档范围操作](javascript:;) | `document.domain` |
-| [WebSocket-URL中毒](javascript:;) | `WebSocket()` |
-| [链接操纵](javascript:;) | `someElement.src` |
-| [网络消息操纵](javascript:;) | `postMessage()` |
-| [Ajax请求标头操作](javascript:;) | `setRequestHeader()` |
-| [本地文件路径操作](javascript:;) | `FileReader.readAsText()` |
-| [客户端SQL注入](javascript:;) | `ExecuteSql()` |
-| [HTML5存储操作](javascript:;) | `sessionStorage.setItem()` |
-| [客户端XPath注入](javascript:;) | `document.evaluate()` |
-| [客户端JSON注入](javascript:;) | `JSON.parse()` |
-| [DOM数据操作](javascript:;) | `someElement.setAttribute()` |
-| [拒绝服务](javascript:;) | `RegExp()` |
+| DOM XSS LABS | `document.write()` |
+| 开放重定向 LABS | `window.location` |
+| Cookie操作 LABS | `document.cookie` |
+| JavaScript注入 | `eval()` |
+| 文档范围操作 | `document.domain` |
+| WebSocket-URL中毒 | `WebSocket()` |
+| 链接操纵 | `someElement.src` |
+| 网络消息操纵 | `postMessage()` |
+| Ajax请求标头操作 | `setRequestHeader()` |
+| 本地文件路径操作 | `FileReader.readAsText()` |
+| 客户端SQL注入 | `ExecuteSql()` |
+| HTML5存储操作 | `sessionStorage.setItem()` |
+| 客户端XPath注入 | `document.evaluate()` |
+| 客户端JSON注入 | `JSON.parse()` |
+| DOM数据操作 | `someElement.setAttribute()` |
+| 拒绝服务 | `RegExp()` |
 
 ### 如何防止基于DOM的污染流漏洞
 

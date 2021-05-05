@@ -54,7 +54,7 @@ stockApi=http://localhost/admin
 
 当然，现在攻击者可以直接访问/ admin URL。 但是通常只有适当的经过身份验证的用户才能访问管理功能。 因此，直接访问URL的攻击者不会看到任何感兴趣的内容。 但是，当对/ admin URL的请求来自本地计算机本身时，将绕过常规访问控制。 该应用程序授予对管理功能的完全访问权限，因为该请求似乎来自受信任的位置。
 
-**实验室**[针对本地服务器的基本SSRF](http://portswigger.cn/academy/subpage/allTopics/all-3.html)
+**实验室**针对本地服务器的基本SSRF
 
 为什么应用程序会以这种方式运行，并且隐式信任来自本地计算机的请求？ 发生这种情况可能有多种原因：
 
@@ -68,7 +68,7 @@ stockApi=http://localhost/admin
 
 服务器端请求伪造常引起的另一种信任关系是应用程序服务器能够与用户无法直接访问的其他后端系统进行交互。 这些系统通常具有不可路由的专用IP地址。 由于后端系统通常受网络拓扑保护，因此它们的安全状态通常较弱。 在许多情况下，内部后端系统包含敏感功能，任何能够与系统交互的人都可以在不进行身份验证的情况下访问它们。
 
-在前面的示例中，假设在后端URL [https://192.168.0.68/admin处有一个管理界面。](https://192.168.0.68/admin处有一个管理界面。) 在这里，攻击者可以通过提交以下请求来利用SSRF漏洞访问管理界面：
+在前面的示例中，假设在后端URL https://192.168.0.68/admin处有一个管理界面。 在这里，攻击者可以通过提交以下请求来利用SSRF漏洞访问管理界面：
 
 ```text
 POST /product/stock HTTP/1.0
@@ -78,7 +78,7 @@ Content-Length: 118
 stockApi=http://192.168.0.68/admin
 ```
 
-**实验室**[针对另一个后端系统的基本SSRF](http://portswigger.cn/academy/subpage/allTopics/all-3.html)
+**实验室**针对另一个后端系统的基本SSRF
 
 ## 规避SSRF的常见防御措施
 
@@ -92,7 +92,7 @@ stockApi=http://192.168.0.68/admin
 * 注册您自己的域名，该域名解析为127.0.0.1。 为此，您可以使用spoofed.burpcollaborator.net。
 * 使用URL编码或大小写变化对阻塞的字符串进行混淆。
 
-**实验室**[具有基于黑名单的输入过滤器的SSRF](http://portswigger.cn/academy/subpage/allTopics/all-3.html)
+**实验室**具有基于黑名单的输入过滤器的SSRF
 
 ### 具有基于黑名单的输入过滤器的SSRF
 
@@ -106,7 +106,7 @@ URL规范包含许多功能，在实现URL的临时分析和验证时可能会�
 * 您可以使用URL编码字符来混淆URL解析代码。 如果实现过滤器的代码与执行后端HTTP请求的代码以不同的方式处理URL编码的字符，则这特别有用。
 * 您可以将这些技术组合在一起使用。
 
-**实验室**[具有基于白名单的输入过滤器的SSRF](http://portswigger.cn/academy/subpage/allTopics/all-3.html)
+**实验室**具有基于白名单的输入过滤器的SSRF
 
 ### 通过开放式重定向绕过SSRF过滤器
 
