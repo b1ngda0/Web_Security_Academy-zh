@@ -130,7 +130,7 @@ URL 规范包含许多在实现 URL 的特殊解析和验证时容易被忽略�
 http://evil-user.net
 ```
 
-您可以利用打开重定向漏洞绕过 URL 过滤，并按如下方式利用 SSRF 漏洞：
+你可以利用打开重定向漏洞绕过 URL 过滤，并按如下方式利用 SSRF 漏洞：
 
 ```http
 POST /product/stock HTTP/1.0
