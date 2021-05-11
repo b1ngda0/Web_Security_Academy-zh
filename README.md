@@ -1,6 +1,6 @@
 # 简介
 
-> 关于 PortSwigger Web Security Academy 的翻译文章  **\[未完成，差得远\]**
+> 关于 PortSwigger Web Security Academy 的翻译文章  **\[暂未完成\]**
 >
 > * 原始链接：[https://portswigger.net/web-security/](https://portswigger.net/web-security/)
 > * 原作者：[PortSwigger](https://portswigger.net/)
