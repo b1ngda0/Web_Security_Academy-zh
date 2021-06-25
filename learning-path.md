@@ -29,7 +29,7 @@ description: '原文链接：https://portswigger.net/web-security/learning-path'
 3. [**跨域资源共享（CORS）**](1-client-side-topics/2-cors/)
 4. [**点击劫持**](1-client-side-topics/3-clickjacking.md)
 5. [**基于DOM的漏洞**](1-client-side-topics/4-dom-based/)
-6. [**WebSocket**](1-client-side-topics/5-websocket/)
+6. \*\*\*\*[**WebSockets**](1-client-side-topics/5-websocket/)\*\*\*\*
 
 ## 进阶主题
 

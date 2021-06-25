@@ -65,7 +65,7 @@
 * [基于DOM的漏洞](1-client-side-topics/4-dom-based/README.md)
   * [基于DOM的漏洞](1-client-side-topics/4-dom-based/1-dom-based.md)
   * [DOM破坏](1-client-side-topics/4-dom-based/2-dom-based-dom-clobbering.md)
-* [WebSocket](1-client-side-topics/5-websocket/README.md)
+* [WebSockets](1-client-side-topics/5-websocket/README.md)
   * [测试WebSockets安全漏洞](1-client-side-topics/5-websocket/1-websockets.md)
   * [什么是WebSocket？](1-client-side-topics/5-websocket/2-websockets-what-are-websockets.md)
   * [跨站点WebSocket劫持](1-client-side-topics/5-websocket/3-websockets-cross-site-websocket-hijacking.md)

@@ -1,2 +1,2 @@
-# WebSocket
+# WebSockets
 
