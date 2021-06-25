@@ -54,7 +54,7 @@ stockApi=http://localhost/admin
 
 当然，现在攻击者可以直接访问`/admin` URL。 但管理功能通常只有经过认证的合适用户才能访问。 因此，直接访问该 URL 的攻击者不会看到任何感兴趣的内容。 但是，当对`/admin` URL 的请求来自本地计算机本身时，将绕过常规访问控制。 该应用程序授予对管理功能的完全访问权限，因为该请求似乎来自受信任的位置。
 
-> **实验：**[针对本地服务器的基本 SSRF](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost)
+> 实验：[针对本地服务器的基本 SSRF](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost)
 
 为什么应用程序会以这种方式运行，并且隐式地信任来自本地计算机的请求？ 这可能是由于各种原因造成的：
 
@@ -78,7 +78,7 @@ Content-Length: 118
 stockApi=http://192.168.0.68/admin
 ```
 
-> **实验：**[针对另一个后端系统的基本 SSRF](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system)
+> 实验：[针对另一个后端系统的基本 SSRF](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system)
 
 ## 规避SSRF的常见防御措施
 
@@ -106,9 +106,9 @@ URL 规范包含许多在实现 URL 的特殊解析和验证时容易被忽略�
 * 你可以使用 URL 编码字符来混淆 URL 解析代码。 如果实现过滤的代码处理 URL 编码字符的方式与执行后端 HTTP 请求的代码不同，这就特别有用。
 * 你可以将这些技术组合在一起使用。
 
-> **实验：**[具有基于白名单输入过滤的 SSRF](https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter)
+> 实验：[具有基于白名单输入过滤的 SSRF](https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter)
 
-> **阅读更多**
+> 阅读更多
 >
 > [SSRF 的新时代](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017#1)
 
@@ -164,7 +164,7 @@ stockApi=http://weliketoshop.net/product/nextProduct?currentProductId=6&path=htt
 
 一些应用程序采用服务器端的分析软件来跟踪访问者。这种软件经常记录请求中的 Referer 头，因为这对追踪进入的链接特别有意义。通常情况下，分析软件会实际访问出现在 Referer 头中的任何第三方 URL。这通常是为了分析引用网站的内容，包括传入链接中使用的锚文本。因此，Referer 标头往往代表了 SSRF 漏洞的富有成效的攻击面。请参阅[盲 SSRF 漏洞](https://portswigger.net/web-security/ssrf/blind)，了解涉及 Referer 头的漏洞的例子。
 
-> **阅读更多**
+> 阅读更多
 >
 > [Cracking the lens: Targeting auxiliary systems](https://portswigger.net/blog/cracking-the-lens-targeting-https-hidden-attack-surface#aux)
 

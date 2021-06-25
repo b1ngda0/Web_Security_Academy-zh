@@ -12,9 +12,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 与往常一样，我们为你创建了一些交互的实验室，以练习利用其中的一些漏洞。如果你已经熟悉这个主题，你可以直接跳进实验室来测试你的技能。
 
-{% hint style="warning" %}
-实验：[认证实验](https://portswigger.net/web-security/all-labs#authentication)
-{% endhint %}
+> 实验：[认证实验](https://portswigger.net/web-security/all-labs#authentication)
 
 ### 什么是认证？
 
@@ -67,7 +65,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 如果你喜欢 hack 认证机制，在完成我们主要的认证实验后，更多的高级用户可能会想尝试并解决我们的 OAuth 认证实验。
 
-> **阅读更多**
+> 阅读更多
 >
 > {% page-ref page="../../2-advanced-topics/5-oauth/1-oauth.md" %}
 
@@ -75,7 +73,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 我们已经展示了几种网站由于如何实现认证而容易受到攻击的方式。为了减少你自己的网站受到这种攻击的风险，有几个一般原则是你应该始终努力遵循的。
 
-> **阅读更多**
+> 阅读更多
 >
 > {% page-ref page="5-securing.md" %}
 

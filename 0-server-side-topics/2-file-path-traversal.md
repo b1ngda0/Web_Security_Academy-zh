@@ -54,9 +54,7 @@ https://insecure-website.com/loadImage?filename=../../../etc/passwd
 https://insecure-website.com/loadImage?filename=..\..\..\windows\win.ini
 ```
 
-{% hint style="warning" %}
-实验：[文件路径遍历，简单情况](https://portswigger.net/web-security/file-path-traversal/lab-simple)
-{% endhint %}
+> 实验：[文件路径遍历，简单情况](https://portswigger.net/web-security/file-path-traversal/lab-simple)
 
 ## 利用文件路径遍历漏洞的常见障碍
 
@@ -68,21 +66,15 @@ https://insecure-website.com/loadImage?filename=..\..\..\windows\win.ini
 
 您也许可以使用文件系统根目录中的绝对路径（例如`filename=/etc/passwd`）来直接引用文件，而无需使用任何遍历序列。
 
-{% hint style="warning" %}
-实验：[文件路径遍历，使用绝对路径绕过被阻止的序列](https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass)
-{% endhint %}
+> 实验：[文件路径遍历，使用绝对路径绕过被阻止的序列](https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass)
 
 您也许可以使用嵌套的遍历序列，例如`....//`或`....\/`，当内部序列被删除时，它们将还原为简单的遍历序列。
 
-{% hint style="warning" %}
-**实验：**[文件路径遍历，遍历序列非递归删除](https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively)
-{% endhint %}
+> 实验：[文件路径遍历，遍历序列非递归删除](https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively)
 
 您也许可以使用各种非标准编码（例如`..%c0%af`或`..%252f`）来绕过输入过滤。
 
-{% hint style="warning" %}
-**实验：**[文件路径遍历，多余的 URL 解码遍历序列被删除](https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode)
-{% endhint %}
+> 实验：[文件路径遍历，多余的 URL 解码遍历序列被删除](https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode)
 
 如果应用程序要求用户提供的文件名必须以预期的基本文件夹（例如`/var/www/images`）开头，则可以包括所需的基本文件夹后跟适当的遍历序列。 例如： 
 
@@ -90,9 +82,7 @@ https://insecure-website.com/loadImage?filename=..\..\..\windows\win.ini
 filename=/var/www/images/../../../etc/passwd
 ```
 
-{% hint style="info" %}
-**实验：**[遍历文件路径，验证路径的起始点](https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path)
-{% endhint %}
+> 实验：[遍历文件路径，验证路径的起始点](https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path)
 
 如果应用程序要求用户提供的文件名必须以预期的文件扩展名（例如`.png`）结尾，则可以使用空字节来有效地在所需的扩展名之前终止文件路径。 例如：
 
@@ -100,9 +90,7 @@ filename=/var/www/images/../../../etc/passwd
 filename=../../../etc/passwd%00.png
 ```
 
-{% hint style="warning" %}
-**实验：**[文件路径遍历，使用空字节绕过文件扩展名验证](https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass)
-{% endhint %}
+> 实验：[文件路径遍历，使用空字节绕过文件扩展名验证](https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass)
 
 ## 如何防止目录遍历攻击
 

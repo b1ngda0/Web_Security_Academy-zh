@@ -64,11 +64,9 @@ All queries combined using a UNION, INTERSECT or EXCEPT operator must have an eq
 
 > 译者注：NullPointerException 即空指针异常。如果一个对象为 null，调用其方法或访问其字段就会产生 NullPointerException。
 
-{% hint style="warning" %}
-**实验：**[SQL 注入 UNION 攻击，确定查询返回的列数](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns)
-{% endhint %}
+> 实验：[SQL 注入 UNION 攻击，确定查询返回的列数](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns)
 
-> **注意**
+> 注意
 >
 > * 使用 `NULL` 作为从注入的 `SELECT` 查询返回的值的原因是，每一列的数据类型在原始查询和注入查询之间必须兼容。由于 `NULL` 可以转换为每种常用的数据类型，因此当列数正确时，使用 `NULL` 可以最大程度的提高 payload 成功的机会。
 > * 在 Oracle 中，`SELECT` 查询必须使用 `FROM` 关键字并指定一个有效表，Oracle 中有一个内置表 `dual`，可用于此目的。因此在 Oracle 中注入的查询语句类似于：`' UNION SELECT NULL FROM DUAL--`。
@@ -97,9 +95,7 @@ Conversion failed when converting the varchar value 'a' to data type int.
 
 如果没有发生错误，并且应用程序的响应包含一些其他内容，包括注入的字符串值，则相关的列适用于检索字符串数据。
 
-{% hint style="warning" %}
-**实验：**[SQL 注入 UNION 攻击，查找包含文本的列](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text)
-{% endhint %}
+> 实验：[SQL 注入 UNION 攻击，查找包含文本的列](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text)
 
 ## 使用UNION注入攻击检索感兴趣的数据
 
@@ -119,9 +115,7 @@ Conversion failed when converting the varchar value 'a' to data type int.
 
 当然，执行此攻击所需的关键信息是存在一个有 `username` 和 `password` 两个字段的名为 `users` 的表。没有这些信息，你不得不尝试去猜测表和列的名称。实际上，所有现代数据库都提供了检查数据库结构，以确定数据库包含哪些表和列的方法。
 
-{% hint style="warning" %}
-**实验：**[SQL 注入 UNION 攻击，从其他表中检索数据](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables)
-{% endhint %}
+> 实验：[SQL 注入 UNION 攻击，从其他表中检索数据](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables)
 
 > 阅读更多：
 >
@@ -151,7 +145,5 @@ carlos~montoya
 
 请注意，不同的数据库使用不同的语法执行字符串拼接。更多细节请参见 [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-{% hint style="warning" %}
-**实验：**[SQL 注入 UNION 攻击，在单个列中检索多个值](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
-{% endhint %}
+> 实验：[SQL 注入 UNION 攻击，在单个列中检索多个值](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
 

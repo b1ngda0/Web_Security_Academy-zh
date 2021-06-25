@@ -58,9 +58,7 @@ aiwefwlguh
 
 将额外的命令分隔符`&`放在注入的命令之后通常是很有用的，因为它将注入命令与注入点后面的内容分开。 这就减少了后面的阻止注入命令执行操作的可能性。
 
-{% hint style="warning" %}
-**实验：**[OS 命令注入，简单案例](https://portswigger.net/web-security/os-command-injection/lab-simple)
-{% endhint %}
+> 实验：[OS 命令注入，简单案例](https://portswigger.net/web-security/os-command-injection/lab-simple)
 
 ## 有用的命令
 
@@ -96,9 +94,7 @@ mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-we
 
 此命令将导致应用程序`ping`其环回网络适配器10次。
 
-{% hint style="warning" %}
-**实验：**[带时间延迟的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays)
-{% endhint %}
+> 实验：[带时间延迟的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays)
 
 ### 通过重定向输出来利用OS命令盲注
 
@@ -110,9 +106,7 @@ mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-we
 
 `>`字符将`whoami`命令的输出发送到指定文件中。 然后，你可以使用浏览器获取`https://vulnerable-website.com/whoami.txt`来获取文件，并查看注入命令的输出。
 
-{% hint style="warning" %}
-**实验：**[带重定向输出的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection)
-{% endhint %}
+> 实验：[带重定向输出的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection)
 
 ### 使用带外（OAST）技术利用盲OS命令注入
 
@@ -124,9 +118,7 @@ mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-we
 
 此 payload 使用`nslookup`命令对指定域进行 DNS 查找。 攻击者可以监视到是否发生了指定的查找，从而检测命令已成功注入。
 
-{% hint style="warning" %}
-**实验：**[带外交互的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band)
-{% endhint %}
+> 实验：[带外交互的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band)
 
 带外通道还提供了一种简单的方法来从注入的命令中提取输出：
 
@@ -140,9 +132,7 @@ mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-we
 wwwuser.kgji2ohoyw.web-attacker.com
 ```
 
-{% hint style="warning" %}
-**实验：**带外数据渗出的 OS 命令盲注
-{% endhint %}
+> 实验：带外数据渗出的 OS 命令盲注
 
 ## 注入 OS 命令的方式
 
@@ -181,7 +171,7 @@ wwwuser.kgji2ohoyw.web-attacker.com
 
 不要试图通过转义 shell 元字符来清理输入。 实际中，这太容易出错，而且容易被熟练的攻击者绕过。
 
-> **阅读更多**
+> 阅读更多
 >
 > [使用 Burp Suite 的 Web 漏洞扫描器找到 OS 命令注入漏洞](https://portswigger.net/burp/vulnerability-scanner)
 

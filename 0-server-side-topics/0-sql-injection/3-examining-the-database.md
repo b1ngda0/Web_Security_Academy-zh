@@ -33,13 +33,9 @@ Copyright (c) Microsoft Corporation
 Standard Edition (64-bit) on Windows Server 2016 Standard 10.0 <X64> (Build 14393: ) (Hypervisor)
 ```
 
-{% hint style="warning" %}
-**实验：**[SQL 注入攻击，在 Oracle 中查询数据库类型和版本](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle)
-{% endhint %}
+> 实验：[SQL 注入攻击，在 Oracle 中查询数据库类型和版本](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle)
 
-{% hint style="warning" %}
-**实验：**[SQL 注入攻击，在 MySQL 和微软中查询数据库类型和版本](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft)
-{% endhint %}
+> 实验：[SQL 注入攻击，在 MySQL 和微软中查询数据库类型和版本](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft)
 
 ## 列出数据库的内容
 
@@ -81,9 +77,7 @@ MyDatabase    dbo          Users      Password    varchar
 
 此输出显示了指定表中的列以及每列的数据类型。
 
-{% hint style="warning" %}
-**实验：**[SQL 注入攻击，在非 Oracle 数据库中列出数据库内容](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle)
-{% endhint %}
+> 实验：[SQL 注入攻击，在非 Oracle 数据库中列出数据库内容](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle)
 
 ## 等效于Oracle中的information schema
 
@@ -101,7 +95,5 @@ SELECT * FROM all_tables
 SELECT * FROM all_tab_columns WHERE table_name = 'USERS'
 ```
 
-{% hint style="warning" %}
-实验：[SQL 注入攻击，在 Oracle 中列出数据库内容](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle)
-{% endhint %}
+> 实验：[SQL 注入攻击，在 Oracle 中列出数据库内容](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle)
 

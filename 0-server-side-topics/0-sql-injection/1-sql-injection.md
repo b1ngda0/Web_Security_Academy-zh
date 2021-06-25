@@ -81,9 +81,7 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
 修改后的查询将返回所有类别为 Gifts 或1等于1的所有商品。由于`1 = 1`始终为真，因此查询将返回所有商品。
 
-{% hint style="warning" %}
 实验：[WHERE 子句中的 SQL 注入漏洞，允许检索隐藏数据](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)
-{% endhint %}
 
 ## 颠覆应用程序逻辑
 
@@ -103,9 +101,7 @@ SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 
 该查询返回用户名为 administrator 的用户，并成功地将攻击者作为该用户登录。
 
-{% hint style="warning" %}
-实验：[SQL 注入漏洞允许登录绕过](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
-{% endhint %}
+> 实验：[SQL 注入漏洞允许登录绕过](https://portswigger.net/web-security/sql-injection/lab-login-bypass)
 
 ## 从其他库表检索数据
 

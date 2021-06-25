@@ -67,9 +67,7 @@ xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator')
 >
 > `SUBSTRING` 函数在某些类型的数据库中称为 `SUBSTR`。更多细节，请参见 [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-{% hint style="warning" %}
-实验：[带条件响应的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
-{% endhint %}
+> 实验：[带条件响应的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
 
 ## 通过触发SQL错误来诱导条件响应
 
@@ -92,13 +90,11 @@ xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a
 xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') THEN 1/0 ELSE 'a' END FROM Users)='a
 ```
 
-> **注意**
+> 注意
 >
 > 触发条件错误的方法有很多种，不同的技术适用于不同的数据库类型。更多细节，请参见 [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-{% hint style="warning" %}
-实验：[带条件错误的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
-{% endhint %}
+> 实验：[带条件错误的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
 
 ## 通过触发时间延时来利用SQL盲注
 
@@ -121,17 +117,13 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 '; IF (SELECT COUNT(Username) FROM Users WHERE Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') = 1 WAITFOR DELAY '0:0:{delay}'--
 ```
 
-> **注意**
+> 注意
 >
 > 在SQL查询中触发时间延迟的方法有很多种，不同的技术适用于不同类型的数据库。更多细节，请参见 [SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-{% hint style="warning" %}
-实验：[带时间延迟的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays)
-{% endhint %}
+> 实验：[带时间延迟的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays)
 
-{% hint style="warning" %}
-实验：[带时间延迟和信息检索的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
-{% endhint %}
+> 实验：[带时间延迟和信息检索的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
 
 ## 使用带外技术（OAST）利用SQL盲注
 
@@ -157,9 +149,7 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 
 你可以使用 Burp Suite 的 [Collaborator client](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client) 生成一个唯一的子域，并轮询 Collaborator 服务器以确认何时进行任何的 DNS 查找。
 
-{% hint style="warning" %}
-实验：[带外交互的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
-{% endhint %}
+> 实验：[带外交互的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
 
 在确定了触发带外交互的方法后，你就可以使用带外通道从易受攻击的应用程序中窃取数据。例如：
 
@@ -175,13 +165,11 @@ S3cure.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net
 
 带外（OAST）技术是检测和利用 SQL 盲注的一种非常强大的方法，因为该方法成功的可能性很高，并且能够直接在带外通道中窃取数据。因此，即使在其他盲注利用技术确实起作用的情况下，OAST 技术通常也是首选的。
 
-> **注意**
+> 注意
 >
 > 触发带外交互的方法有多种，不同的技术适用于不同类型的数据库。更多详情，请参见[SQL 注入备忘单](https://portswigger.net/web-security/sql-injection/cheat-sheet)。
 
-{% hint style="warning" %}
-实验：[带外数据渗出的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration)
-{% endhint %}
+> 实验：[带外数据渗出的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration)
 
 ## 如何防止SQL盲注攻击
 
@@ -189,7 +177,7 @@ S3cure.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net
 
 与普通的 SQL 注入一样，可以通过谨慎使用参数化查询来防止 SQL 盲注攻击，参数化查询可以确保用户的输入不会干扰预期的 SQL 查询结构。
 
-> **阅读更多**
+> 阅读更多
 >
 > [如何防范 SQL 注入](https://portswigger.net/web-security/sql-injection#how-to-prevent-sql-injection)
 >
