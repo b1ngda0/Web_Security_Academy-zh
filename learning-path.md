@@ -22,7 +22,7 @@ description: '原文链接：https://portswigger.net/web-security/learning-path'
 
 ## 客户端主题
 
-客户端漏洞又增加了一层复杂性，这可能会使它们更具挑战性。这些材料和实验将帮助你建立在你已经学会的服务器端技能基础上，并教你如何识别和利用一些可怕的客户端载体。
+客户端漏洞又增加了一层复杂性，这可能会使它们略微更具挑战性。这些材料和实验将帮助你建立在已经学会的服务器端技能基础上，并教你如何识别和利用一些棘手的客户端载体。
 
 1. [**跨站脚本（XSS）**](1-client-side-topics/0-cross-site-scripting/)
 2. [**跨站请求伪造（CSRF）**](1-client-side-topics/1-csrf/)
