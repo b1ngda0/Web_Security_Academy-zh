@@ -65,10 +65,10 @@ All queries combined using a UNION, INTERSECT or EXCEPT operator must have an eq
 > 译者注：NullPointerException 即空指针异常。如果一个对象为 null，调用其方法或访问其字段就会产生 NullPointerException。
 
 {% hint style="warning" %}
-**实验：**[SQL注入UNION攻击，确定查询返回的列数](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns)
+**实验：**[SQL 注入 UNION 攻击，确定查询返回的列数](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns)
 {% endhint %}
 
-> **Note**
+> **注意**
 >
 > * 使用 `NULL` 作为从注入的 `SELECT` 查询返回的值的原因是，每一列的数据类型在原始查询和注入查询之间必须兼容。由于 `NULL` 可以转换为每种常用的数据类型，因此当列数正确时，使用 `NULL` 可以最大程度的提高 payload 成功的机会。
 > * 在 Oracle 中，`SELECT` 查询必须使用 `FROM` 关键字并指定一个有效表，Oracle 中有一个内置表 `dual`，可用于此目的。因此在 Oracle 中注入的查询语句类似于：`' UNION SELECT NULL FROM DUAL--`。
