@@ -4,5 +4,5 @@ Web Security Academy 是 PortSwigger 推出的一个关于 Web 安全在线学�
 
 本人曾有过机会给学弟、妹们培训 Web 安全的入门学习相关知识，但当时并未注意到 Web Security Academy。如今注意到了，发现质量确实是不错，能够较为系统性的帮助新手学习 Web 安全中的常见知识。这也就是我将此译成中文的缘故。
 
-本人的翻译并不是特别好，但会尽以最大的诚意完成此翻译！
+本人的翻译并不是特别好，但会尽以最大的诚意完成此翻译！如果读者朋友们在阅读时发现有不合适、不通顺的地方，请反馈一个 [Issue](https://github.com/FanqXu/Web_Security_Academy-zh/issues/new)，您的参与将会使此项目变得更完善。
 
