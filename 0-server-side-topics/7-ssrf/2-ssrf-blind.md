@@ -1,5 +1,5 @@
 ---
-description: 'https://portswigger.net/web-security/ssrf/blind'
+description: '原文链接：https://portswigger.net/web-security/ssrf/blind'
 ---
 
 # 盲SSRF漏洞
