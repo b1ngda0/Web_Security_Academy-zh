@@ -2,6 +2,8 @@
 
 * [简介](README.md)
 * [译序](bullshit.md)
+* [番外篇](fan-wai-pian/README.md)
+  * [Web应用程序安全测试](fan-wai-pian/web-ying-yong-cheng-xu-an-quan-ce-shi.md)
 * [学习路线&目录](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
