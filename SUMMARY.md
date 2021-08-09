@@ -2,10 +2,6 @@
 
 * [简介](README.md)
 * [译序](bullshit.md)
-* [番外篇](fan-wai-pian/README.md)
-  * [Web应用程序安全测试](fan-wai-pian/web-ying-yong-cheng-xu-an-quan-ce-shi.md)
-  * [动态应用程序安全测试（DAST）](fan-wai-pian/dong-tai-ying-yong-cheng-xu-an-quan-ce-shi-dast.md)
-  * [带外通道应用程序安全测试（OAST）](fan-wai-pian/dai-wai-tong-dao-ying-yong-cheng-xu-an-quan-ce-shi-oast.md)
 * [学习路线&目录](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
@@ -99,4 +95,10 @@
   * [OAuth授权类型](2-advanced-topics/5-oauth/2-oauth-grant-types.md)
   * [OpenID Connect](2-advanced-topics/5-oauth/3-oauth-openid.md)
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
+
+## 番外篇 <a id="fan-wai-pian-1"></a>
+
+* [Web应用程序安全测试](fan-wai-pian-1/web-ying-yong-cheng-xu-an-quan-ce-shi.md)
+* [动态应用程序安全测试（DAST）](fan-wai-pian-1/dong-tai-ying-yong-cheng-xu-an-quan-ce-shi-dast.md)
+* [带外通道应用程序安全测试（OAST）](fan-wai-pian-1/dai-wai-tong-dao-ying-yong-cheng-xu-an-quan-ce-shi-oast.md)
 
