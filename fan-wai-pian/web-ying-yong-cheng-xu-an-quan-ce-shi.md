@@ -8,7 +8,7 @@ description: '原文链接：https://portswigger.net/burp/application-security-t
 
 ## 什么是Web应用程序安全测试？
 
-Web应用程序安全测试的目的是确定一个Web应用程序是否容易受到攻击。它涵盖了一些不同的方法学中的自动和手动技术。
+Web应用程序安全测试的目的是确定一个Web应用程序是否容易受到攻击。它涵盖了跨越许多不同方法的自动化和手动技术。
 
 ### Web应用程序无处不在
 
