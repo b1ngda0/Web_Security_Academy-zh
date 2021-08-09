@@ -4,6 +4,8 @@
 * [译序](bullshit.md)
 * [番外篇](fan-wai-pian/README.md)
   * [Web应用程序安全测试](fan-wai-pian/web-ying-yong-cheng-xu-an-quan-ce-shi.md)
+  * [动态应用程序安全测试（DAST）](fan-wai-pian/dong-tai-ying-yong-cheng-xu-an-quan-ce-shi-dast.md)
+  * [带外通道应用程序安全测试（OAST）](fan-wai-pian/dai-wai-tong-dao-ying-yong-cheng-xu-an-quan-ce-shi-oast.md)
 * [学习路线&目录](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
