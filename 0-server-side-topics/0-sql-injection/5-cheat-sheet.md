@@ -4,7 +4,7 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 # SQL注入备忘单
 
-这个 [SQL 注入](https://portswigger.net/web-security/sql-injection)备忘单包含了一些有用的语法例子，你可以用来执行 SQL 注入攻击时经常出现的各种任务。
+这个 SQL 注入备忘单包含了一些有用的语法例子，你可以用来执行 SQL 注入攻击时经常出现的各种任务。
 
 ## 字符串连接
 
