@@ -1,6 +1,30 @@
 ---
-description: 'https://portswigger.net/web-security/authentication/password-based'
+description: '原文链接：https://portswigger.net/web-security/authentication/password-based'
 ---
 
 # 基于密码登录中的漏洞
+
+在本节中，我们将更仔细地研究一些基于密码的登录机制中最常见的漏洞。我们还将提出这些漏洞有可能被利用的方法。甚至还有一些互动实验，让你可以自己尝试利用这些漏洞。
+
+对于采用基于密码的登录过程的网站，用户要么自己注册一个账户，要么由管理员分配一个账户。这个账户与一个独特的用户名和一个秘密密码相关联，用户在登录表格中输入这些密码来验证自己。
+
+在这种情况下，仅凭他们知道秘密密码这一事实，就足以证明用户的身份。因此，如果攻击者能够获得或猜到另一个用户的登录凭证，网站的安全性就会受到影响。
+
+这可以通过各种方式实现，我们将在下面探讨。
+
+### 暴力破解攻击
+
+
+
+### 有缺陷的暴力破解保护
+
+
+
+### HTTP basic 认证 <a id="http-basic-authentication"></a>
+
+
+
+
+
+
 
