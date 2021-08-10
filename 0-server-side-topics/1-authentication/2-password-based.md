@@ -12,19 +12,19 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 这可以通过各种方式实现，我们将在下面探讨。
 
-### 暴力破解攻击
+## 暴力破解攻击
 
 暴力破解攻击是指攻击者使用反复试验的系统来试图猜测有效的用户凭证。这些攻击通常是使用用户名和密码的字典自动进行的。自动化这一过程，特别是使用专用工具，有可能使攻击者能够高速进行大量的登录尝试。
 
 暴力破解并不总是只对用户名和密码进行完全随机的猜测。通过使用基本的逻辑或公开的常识，攻击者可以对暴力攻击进行微调，以做出更有根据的猜测。这大大提高了这种攻击的效率。依赖密码登录作为唯一验证用户身份方法的网站，如果不实施足够的暴力破解攻击保护，将非常容易受到攻击。
 
-#### 暴力破解用户名 <a id="brute-forcing-usernames"></a>
+### 暴力破解用户名
 
 如果用户名符合一种可识别的模式，如电子邮件地址，那么就特别容易被猜中。例如，很常见的是，商业网站登录的格式是`firstname.lastname@somecompany.com`。然而，即使没有明显的模式，有时甚至高权限的账户也是使用可预测的用户名创建的，如`admin`或`administrator`。
 
 在审计过程中，检查网站是否公开了潜在用户名。例如，你是否能够在不登录的情况下访问用户档案？即使档案的实际内容被隐藏，用户档案中使用的名字有时与登录用户名相同。你还应该检查HTTP响应，看看是否有任何电子邮件地址被泄漏。偶尔，响应中会包含管理员和IT支持等高权限用户的电子邮件地址。
 
-#### 暴力破解密码 <a id="brute-forcing-passwords"></a>
+### 暴力破解密码
 
 密码也同样可以被暴力破解，其难度根据密码的强度而变化。许多网站采用了某种形式的密码策略，迫使用户创建高熵的密码，至少在理论上，这种密码更难被暴力破解。这通常包括强制要求密码具有：
 
@@ -38,7 +38,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 这种对可能的凭证和可预测的模式的了解，意味着暴力攻击往往比简单地迭代每一个可能的字符组合要复杂得多，因此也有效。
 
-#### 用户名枚举 <a id="username-enumeration"></a>
+### 用户名枚举
 
 用户名枚举是指攻击者能够观察到网站行为的变化，以确定一个特定的用户名是否有效。
 
@@ -58,7 +58,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 > 实验：[通过响应时间枚举用户名](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-response-timing)
 
-### 有缺陷的暴力破解保护
+## 有缺陷的暴力破解保护
 
 在攻击者成功入侵一个账户之前，暴力破解攻击极有可能涉及许多失败的猜测。从逻辑上讲，暴力破解攻击保护是围绕着尽量使其成为一个棘手的自动化过程，并减慢攻击者尝试登录的速度。防止暴力攻击的两个最常见的方法是。
 
@@ -73,7 +73,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 > 实验：[破坏暴力破解保护，IP封锁](https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block)
 
-#### 账户锁定
+### 账户锁定
 
 网站试图防止暴力破解攻击的一种方法是，如果满足某些可疑的标准，通常是登录失败的设定次数，就会锁定账户。就像正常的登录错误一样，来自服务器的显示账户被锁定的响应也可以帮助攻击者列举用户名。
 
@@ -89,7 +89,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 帐户锁定也不能防止凭证填充攻击。这涉及到使用大量的用户名:密码对的字典，由数据泄露中窃取的真实登录凭证组成。凭证填充攻击依赖于这样一个事实，即许多人在多个网站上重复使用相同的用户名和密码，因此，字典中的一些受损凭证也有可能在目标网站上有效。帐户锁定并不能防止凭证堵塞，因为每个用户名只被尝试一次。凭证填充特别危险，因为它有时会导致攻击者只用一次自动攻击就能破坏许多不同的账户。
 
-#### 用户速率限制
+### 用户速率限制
 
 网站试图防止暴力破解攻击的另一种方式是通过用户速率限制。在这种情况下，在短时间内发出过多的登录请求会导致你的IP地址被封锁。通常情况下，IP只能通过以下一种方式解封。
 
@@ -103,7 +103,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 > 实验：[破坏暴力破解保护，每个请求有多个凭据](https://portswigger.net/web-security/authentication/password-based/lab-broken-brute-force-protection-multiple-credentials-per-request)
 
-### HTTP basic认证 <a id="http-basic-authentication"></a>
+## HTTP basic认证
 
 尽管相当古老，但它的相对简单和易于实现意味着你有时可能会看到HTTP basic认证被使用。在HTTP basic认证中，客户端从服务器收到一个认证令牌，该令牌由用户名和密码连接而成，并以Base64编码。这个令牌由浏览器存储和管理，浏览器会自动将其添加到每个后续请求的`Authorization`头中，具体如下。
 
@@ -116,24 +116,4 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 HTTP basic认证也特别容易受到与会话相关的攻击，特别是CSRF，它本身不提供保护。
 
 在某些情况下，利用脆弱的HTTP basic认证可能只允许攻击者访问一个看起来不感兴趣的页面。然而，除了提供一个进一步的攻击面之外，以这种方式暴露的凭证可能会在其他更机密的情况下被重新使用。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
