@@ -1,5 +1,5 @@
 ---
-cover: https://pbs.twimg.com/profile_banners/990945874019840000/1591954966/1500x500
+cover: .gitbook/assets/introduction-cover.jpg
 coverY: 0
 ---
 
