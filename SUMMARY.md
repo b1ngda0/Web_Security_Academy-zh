@@ -60,7 +60,7 @@
   * [使用SameSite Cookie防御CSRF](1-client-side-topics/1-csrf/4-csrf-samesite-cookies.md)
 * [跨域资源共享（CORS）](1-client-side-topics/2-cors/README.md)
   * [跨域资源共享（CORS）](1-client-side-topics/2-cors/1-cors.md)
-  * [同源策略SOP）](1-client-side-topics/2-cors/2-cors-same-origin-policy.md)
+  * [同源策略（SOP）](1-client-side-topics/2-cors/2-cors-same-origin-policy.md)
   * [CORS和Access-Control-Allow-Origin响应头](1-client-side-topics/2-cors/3-cors-access-control-allow-origin.md)
 * [点击劫持](1-client-side-topics/3-clickjacking.md)
 * [基于DOM的漏洞](1-client-side-topics/4-dom-based/README.md)
