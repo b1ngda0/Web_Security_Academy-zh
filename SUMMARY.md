@@ -1,8 +1,8 @@
 # Table of contents
 
-* [简介](README.md)
-* [译序](bullshit.md)
-* [学习路线&目录](learning-path.md)
+* [Web安全学院 - PortSwigger](README.md)
+* [译序](preface.md)
+* [学习路线](learning-path.md)
 
 ## 服务器端主题 <a id="0-server-side-topics"></a>
 
@@ -18,8 +18,8 @@
   * [多因素身份验证中的漏洞](0-server-side-topics/1-authentication/3-multi-factor.md)
   * [其他身份验证机制中的漏洞](0-server-side-topics/1-authentication/4-other-mechanisms.md)
   * [如何保护你的认证机制](0-server-side-topics/1-authentication/5-securing.md)
-* [目录遍历](0-server-side-topics/2-file-path-traversal.md)
-* [OS命令注入](0-server-side-topics/3-os-command-injection.md)
+* [目录遍历](0-server-side-topics/2-file-path-traversal/README.md)
+* [OS命令注入](0-server-side-topics/3-os-command-injection/README.md)
 * [业务逻辑漏洞](0-server-side-topics/4-logic-flaws/README.md)
   * [业务逻辑漏洞](0-server-side-topics/4-logic-flaws/1-logic-flaws.md)
   * [业务逻辑漏洞示例](0-server-side-topics/4-logic-flaws/2-logic-flaws-examples.md)
@@ -30,13 +30,14 @@
   * [访问控制漏洞和特权升级](0-server-side-topics/6-access-control/1-access-control.md)
   * [不安全的直接对象引用（IDOR）](0-server-side-topics/6-access-control/2-access-control-idor.md)
   * [访问控制安全模型](0-server-side-topics/6-access-control/3-access-control-security-models.md)
-* [服务器端请求伪造（SSRF）](0-server-side-topics/7-ssrf/README.md)
-  * [服务器端伪造请求（SSRF）](0-server-side-topics/7-ssrf/1-ssrf.md)
-  * [盲SSRF漏洞](0-server-side-topics/7-ssrf/2-ssrf-blind.md)
-* [XXE注入](0-server-side-topics/8-xxe/README.md)
-  * [XML外部实体（XXE）注入](0-server-side-topics/8-xxe/1-xxe.md)
-  * [XML实体](0-server-side-topics/8-xxe/2-xxe-xml-entities.md)
-  * [查找和利用XXE盲目漏洞](0-server-side-topics/8-xxe/3-xxe-blind.md)
+* [文件上传漏洞](0-server-side-topics/7-file-upload/README.md)
+* [服务器端请求伪造（SSRF）](0-server-side-topics/8-ssrf/README.md)
+  * [服务器端伪造请求（SSRF）](0-server-side-topics/8-ssrf/1-ssrf.md)
+  * [盲SSRF漏洞](0-server-side-topics/8-ssrf/2-ssrf-blind.md)
+* [XXE注入](0-server-side-topics/9-xxe/README.md)
+  * [XML外部实体（XXE）注入](0-server-side-topics/9-xxe/1-xxe.md)
+  * [XML实体](0-server-side-topics/9-xxe/2-xxe-xml-entities.md)
+  * [查找和利用XXE盲目漏洞](0-server-side-topics/9-xxe/3-xxe-blind.md)
 
 ## 客户端主题 <a id="1-client-side-topics"></a>
 
@@ -61,7 +62,7 @@
   * [跨域资源共享（CORS）](1-client-side-topics/2-cors/1-cors.md)
   * [同源策略SOP）](1-client-side-topics/2-cors/2-cors-same-origin-policy.md)
   * [CORS和Access-Control-Allow-Origin响应头](1-client-side-topics/2-cors/3-cors-access-control-allow-origin.md)
-* [点击劫持（UI纠正）](1-client-side-topics/3-clickjacking.md)
+* [点击劫持](1-client-side-topics/3-clickjacking.md)
 * [基于DOM的漏洞](1-client-side-topics/4-dom-based/README.md)
   * [基于DOM的漏洞](1-client-side-topics/4-dom-based/1-dom-based.md)
   * [DOM破坏](1-client-side-topics/4-dom-based/2-dom-based-dom-clobbering.md)
@@ -95,10 +96,11 @@
   * [OAuth授权类型](2-advanced-topics/5-oauth/2-oauth-grant-types.md)
   * [OpenID Connect](2-advanced-topics/5-oauth/3-oauth-openid.md)
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
+* [JWT认证](2-advanced-topics/6-jwt/README.md)
 
-## 番外篇 <a id="fan-wai-pian-1"></a>
+## 番外篇 - Web应用程序安全测试 <a id="3-extras"></a>
 
-* [Web应用程序安全测试](fan-wai-pian-1/web-ying-yong-cheng-xu-an-quan-ce-shi.md)
-* [动态应用程序安全测试（DAST）](fan-wai-pian-1/dong-tai-ying-yong-cheng-xu-an-quan-ce-shi-dast.md)
-* [带外通道应用程序安全测试（OAST）](fan-wai-pian-1/dai-wai-tong-dao-ying-yong-cheng-xu-an-quan-ce-shi-oast.md)
+* [Web应用程序安全测试](3-extras/0-application-security-testing/README.md)
+* [动态应用程序安全测试（DAST）](3-extras/0-application-security-testing/1-dast.md)
+* [带外通道应用程序安全测试（OAST）](3-extras/0-application-security-testing/2-oast.md)
 

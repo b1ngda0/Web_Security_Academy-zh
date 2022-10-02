@@ -1,6 +1,8 @@
-# 简介
+# [译] Web安全学院 - PortSwigger
 
-> 关于 PortSwigger Web Security Academy 的翻译文章  **\[暂未完成\]**
+## 0x00 简介
+
+> 来自著名Web安全工具Burp Suite的创建者所编写的免费在线网络安全培训材料。
 >
 > * 原始链接：[https://portswigger.net/web-security/](https://portswigger.net/web-security/)
 > * 原作者：[PortSwigger](https://portswigger.net/)
@@ -10,47 +12,47 @@
 
 ![](.gitbook/assets/cover.jpg)
 
-## 0x00 阅读方式
+## 0x01 阅读方式
 
 ### 在线阅读
 
-* [https://0xf4n9x.gitbook.io/portswigger-web-security-academy-zh/](https://0xf4n9x.gitbook.io/portswigger-web-security-academy-zh/)
+* [GitBook](https://0xf9.gitbook.io/pwsazh/)
+* [Github](learning-path.md)
 
 ### 离线部署
 
-安装`nodejs`和`npm`
+安装`nodejs`和`npm`。
 
-```text
+```bash
 apt install nodejs npm
 ```
 
-使用`npm`安装`gitbook`
+使用`npm`安装`gitbook`。
 
-```text
+```bash
 npm install gitbook-cli -g
 ```
 
-克隆此仓库
+克隆此仓库。
 
-```text
+```bash
 git clone https://github.com/0xf4n9x/Web_Security_Academy-zh
 ```
 
-部署
+使用`gitbook`命令进行部署。
 
-```text
+```bash
 cd Web_Security_Academy-zh && gitbook serve
 ```
 
-访问 [http://IP:4000](http://IP:4000)
+访问：http://127.0.0.1:4000
 
-## 0x01 阅读建议
+## 0x02 阅读建议
 
-动手实践！完成 PortSwigger 的 Lab 实验。
+动手实践！完成每一节相对应的Labs。
 
-## 0x02 免责声明
+## 0x03 免责声明
 
-@\_0xf4n9x\_ 纯粹出于学习目的与个人兴趣翻译，不追求任何经济利益，也坚决拒绝其他任何人以此牟利。本译文只供学习研究参考之用，不得用于商业用途。
+@\_0xf4n9x\_纯粹出于学习目的与个人兴趣翻译，不追求任何经济利益，也坚决拒绝其他任何人以此牟利。本译文只供学习研究参考之用，不得用于商业用途。
 
 基于开源精神，欢迎一切基于学习研究目的的转发，转载请注明出处。
-
