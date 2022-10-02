@@ -1,4 +1,9 @@
-# [译] Web安全学院 - PortSwigger
+---
+cover: https://pbs.twimg.com/profile_banners/990945874019840000/1591954966/1500x500
+coverY: 0
+---
+
+# Web安全学院 - PortSwigger
 
 ## 0x00 简介
 
@@ -6,8 +11,8 @@
 >
 > * 原始链接：[https://portswigger.net/web-security/](https://portswigger.net/web-security/)
 > * 原作者：[PortSwigger](https://portswigger.net/)
-> * 译者：[\_0xf4n9x\_](https://twitter.com/_0xf4n9x_)
-> * GitHub：[https://github.com/0xf4n9x/Web\_Security\_Academy-zh](https://github.com/0xf4n9x/Web_Security_Academy-zh)
+> * 译者：[\_0xf4n9x\_](https://twitter.com/\_0xf4n9x\_)
+> * GitHub：[https://github.com/0xf4n9x/Web\_Security\_Academy-zh](https://github.com/0xf4n9x/Web\_Security\_Academy-zh)
 > * 协议：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ![](.gitbook/assets/cover.jpg)

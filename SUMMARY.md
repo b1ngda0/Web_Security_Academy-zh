@@ -4,7 +4,7 @@
 * [译序](preface.md)
 * [学习路线](learning-path.md)
 
-## 服务器端主题 <a id="0-server-side-topics"></a>
+## 服务器端主题 <a href="#0-server-side-topics" id="0-server-side-topics"></a>
 
 * [SQL注入](0-server-side-topics/0-sql-injection/README.md)
   * [SQL注入](0-server-side-topics/0-sql-injection/1-sql-injection.md)
@@ -39,7 +39,7 @@
   * [XML实体](0-server-side-topics/9-xxe/2-xxe-xml-entities.md)
   * [查找和利用XXE盲目漏洞](0-server-side-topics/9-xxe/3-xxe-blind.md)
 
-## 客户端主题 <a id="1-client-side-topics"></a>
+## 客户端主题 <a href="#1-client-side-topics" id="1-client-side-topics"></a>
 
 * [跨站脚本（XSS）](1-client-side-topics/0-cross-site-scripting/README.md)
   * [跨站脚本](1-client-side-topics/0-cross-site-scripting/1-cross-site-scripting.md)
@@ -62,7 +62,7 @@
   * [跨域资源共享（CORS）](1-client-side-topics/2-cors/1-cors.md)
   * [同源策略（SOP）](1-client-side-topics/2-cors/2-cors-same-origin-policy.md)
   * [CORS和Access-Control-Allow-Origin响应头](1-client-side-topics/2-cors/3-cors-access-control-allow-origin.md)
-* [点击劫持](1-client-side-topics/3-clickjacking.md)
+* [点击劫持](1-client-side-topics/dian-ji-jie-chi.md)
 * [基于DOM的漏洞](1-client-side-topics/4-dom-based/README.md)
   * [基于DOM的漏洞](1-client-side-topics/4-dom-based/1-dom-based.md)
   * [DOM破坏](1-client-side-topics/4-dom-based/2-dom-based-dom-clobbering.md)
@@ -71,7 +71,7 @@
   * [什么是WebSocket？](1-client-side-topics/5-websocket/2-websockets-what-are-websockets.md)
   * [跨站点WebSocket劫持](1-client-side-topics/5-websocket/3-websockets-cross-site-websocket-hijacking.md)
 
-## 进阶主题 <a id="2-advanced-topics"></a>
+## 进阶主题 <a href="#2-advanced-topics" id="2-advanced-topics"></a>
 
 * [不安全的反序列化](2-advanced-topics/0-deserialization/README.md)
   * [不安全的反序列化](2-advanced-topics/0-deserialization/1-deserialization.md)
@@ -98,9 +98,8 @@
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
 * [JWT认证](2-advanced-topics/6-jwt/README.md)
 
-## 番外篇 - Web应用程序安全测试 <a id="3-extras"></a>
+## 番外篇 - Web应用程序安全测试 <a href="#3-extras" id="3-extras"></a>
 
 * [Web应用程序安全测试](3-extras/0-application-security-testing/README.md)
 * [动态应用程序安全测试（DAST）](3-extras/0-application-security-testing/1-dast.md)
 * [带外通道应用程序安全测试（OAST）](3-extras/0-application-security-testing/2-oast.md)
-
