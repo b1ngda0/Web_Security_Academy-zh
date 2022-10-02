@@ -1,3 +1,8 @@
+---
+cover: .gitbook/assets/imgs/cover/home-cover.jpeg
+coverY: 0
+---
+
 # Web安全学院 - PortSwigger
 
 ## 0x00 简介
