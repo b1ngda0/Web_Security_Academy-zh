@@ -4,7 +4,7 @@ description: '原文链接：https://portswigger.net/burp/application-security-t
 
 # Web应用程序安全测试
 
-![](../.gitbook/assets/web-app-security-graphic%20%281%29.svg)
+![](../../.gitbook/assets/web-app-security-graphic%20%281%29.svg)
 
 ## 什么是Web应用程序安全测试？
 
