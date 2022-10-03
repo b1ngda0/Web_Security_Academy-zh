@@ -46,7 +46,7 @@ IAST修改一个正在运行的应用，以便发现漏洞。这很像在你的�
 
 由于其侵入性，IAST不应被用于生产系统。这限制了它在测试环境中的应用。这也是OAST（见下文）可以被认为是“世界上最好的”安全测试技术的一个原因。
 
-### 带外通道应用程序安全测试（OAST）
+### 带外应用程序安全测试（OAST）
 
 [OAST](./2-oast.md)是[PortSwigger首创](https://portswigger.net/blog/oast-out-of-band-application-security-testing)的一项技术。正如我们所知，由于DAST（动态应用程序安全测试）看不到东西，除非它们从外部造成可见的差异，因此它有可能错过“blind”的漏洞。OAST解决了这个问题，同时几乎没有误报，并且也不需要修改应用。
 
