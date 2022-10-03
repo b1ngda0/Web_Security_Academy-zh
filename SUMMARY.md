@@ -4,6 +4,12 @@
 * [译序](preface.md)
 * [学习路线](learning-path.md)
 
+## 前篇 <a href="#3-extras" id="3-extras"></a>
+
+* [Web应用程序安全测试](3-extras/0-application-security-testing/README.md)
+  * [动态应用程序安全测试（DAST）](3-extras/0-application-security-testing/1-dast.md)
+  * [带外通道应用程序安全测试（OAST）](3-extras/0-application-security-testing/2-oast.md)
+
 ## 服务器端主题 <a href="#0-server-side-topics" id="0-server-side-topics"></a>
 
 * [SQL注入](0-server-side-topics/0-sql-injection/README.md)
@@ -98,8 +104,4 @@
   * [如何防范OAuth认证漏洞](2-advanced-topics/5-oauth/4-oauth-preventing.md)
 * [JWT认证](2-advanced-topics/6-jwt/README.md)
 
-## 番外篇 - Web应用程序安全测试 <a href="#3-extras" id="3-extras"></a>
 
-* [Web应用程序安全测试](3-extras/0-application-security-testing/README.md)
-* [动态应用程序安全测试（DAST）](3-extras/0-application-security-testing/1-dast.md)
-* [带外通道应用程序安全测试（OAST）](3-extras/0-application-security-testing/2-oast.md)
