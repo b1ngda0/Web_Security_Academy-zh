@@ -1,6 +1,6 @@
 # Web应用安全测试
 
-![web-app-security-graphic](../../.gitbook/assets/imgs/3-extras/0-ast/web-app-security-graphic.svg)
+![](../../.gitbook/assets/imgs/3-extras/0-ast/web-app-security-graphic.svg)
 
 ## 什么是Web应用安全测试？
 

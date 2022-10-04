@@ -16,7 +16,7 @@
 
 ### 自动化DAST
 
-众所周知，DAST背后的概念是它模仿真实的攻击。就像银行劫匪一样，真正的网络攻击者要做的第一件事就是查明房屋。Burp Suite的扫描器通过“抓取”（crawling）你正在查看的 Web应用来模拟这一点。
+众所周知，DAST背后的概念是它模仿真实的攻击。就像银行劫匪一样，真正的网络攻击者要做的第一件事就是查明房屋。Burp Suite的扫描器通过“抓取”（crawling）你正在查看的Web应用来模拟这一点。
 
 爬虫是一种机器人，可以自动访问和记录Web应用的每个页面。有了这些内容，它就可以创建地图。考虑到许多现代Web应用程序的动态和易变性，构建爬虫实际上比听起来要复杂得多。
 
@@ -30,9 +30,9 @@ Burp Suite的自动扫描器能够检测[一长串的安全漏洞](https://ports
 
 没有一个自动化漏洞扫描器能够发现每一个漏洞。虽然自动化软件为渗透测试人员和漏洞赏金猎人节省了大量时间，但在某些情况下，人的创造力和横向思维是不可替代的。
 
-通常，测试人员会先使用自动化的DAST解决方案，以收获“唾手可得的果实”。这种方法为他们腾出额外的时间来处理更加有趣的漏洞。这就是为什么除了Burp Scanner之外，[Burp Suite Professional](https://portswigger.net/burp/pro)还包含一个强大的截断代理，专为手动Web安全测试人员的需求量身定制。
+通常，测试人员会先使用自动化的DAST解决方案，以收获“唾手可得的果实”。这种方法为他们腾出额外的时间来处理更加有趣的漏洞。这就是为什么除了Burp Scanner之外，[Burp Suite专业版](https://portswigger.net/burp/pro)还包含一个强大的截断代理，专为手动Web安全测试人员的需求量身定制。
 
-![how-an-intercepting-proxy-works](../../.gitbook/assets/imgs/3-extras/0-ast/how-an-intercepting-proxy-works.svg)
+![](../../.gitbook/assets/imgs/3-extras/0-ast/how-an-intercepting-proxy-works.svg)
 
 截断代理是一个相当简单的概念。就Burp Suite而言，它意味着一个软件来拦截测试者的浏览器和他们的目标Web应用程序之间的所有HTTP流量。Burp Suite甚至会对HTTPS（加密）流量执行此操作。读取Web应用程序和浏览器之间发送的所有通信的能力在DAST背景下是无价的。
 
