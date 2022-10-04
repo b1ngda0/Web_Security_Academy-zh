@@ -94,4 +94,6 @@ PortSwigger是Burp Suite的制造商，它是一个DAST工具。我们认为它�
 
 https://portswigger.net/customers
 
-> <sup>[1]</sup> 译者注：agnostic approach翻译为不可知论方法。在基于计算机的环境中，不可知论方法是跨系统可互操作的方法，并且对使用特定技术、模型、方法或数据没有偏见。
+> 译者注：
+>
+> <sup>[1]</sup> agnostic approach翻译为不可知论方法。在基于计算机的环境中，不可知论方法是跨系统可互操作的方法，并且对使用特定技术、模型、方法或数据没有偏见。
