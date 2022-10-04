@@ -39,9 +39,3 @@
 5. [**HTTP请求走私**](2-advanced-topics/4-request-smuggling/)
 6. [**OAuth认证**](2-advanced-topics/5-oauth/)
 7. [**JWT认证**](2-advanced-topics/6-jwt/)
-
-## 番外篇 - Web应用程序安全测试
-
-1. [**Web应用程序安全测试**](3-extras/0-application-security-testing/README.md)
-2. [**动态应用程序安全测试（DAST）**](3-extras/0-application-security-testing/1-dast.md)
-3. [**带外通道应用程序安全测试（OAST）**](3-extras/0-application-security-testing/2-oast.md)
