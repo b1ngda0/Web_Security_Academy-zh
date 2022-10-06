@@ -30,7 +30,7 @@ OAST改善了DAST安全测试所得到的结果。在许多方面，它本身就
 
 传统的动态测试在其简单性上是优雅的。从本质上讲，它将有效载荷（payload<sup>[1]</sup>）发送到目标应用程序并分析返回的响应，就像真正的攻击者一样。
 
-![](../../.gitbook/assets/imgs/3-extras/0-ast/dast-security-testing-diagram.svg)
+![](../../.gitbook/assets/imgs/extras/ast/dast-security-testing-diagram.svg)
 
 当你发送一个DAST payload，并且你的目标返回给你一个表明存在漏洞的响应时，你可以很肯定它是真实的。动态测试之所以取得这样的成功，是因为它在这些情况下运作良好。
 
@@ -42,7 +42,7 @@ OAST改善了DAST安全测试所得到的结果。在许多方面，它本身就
 
 Burp Collaborator通过在动态测试过程中引入一个新的通信渠道来执行OAST。
 
-![](../../.gitbook/assets/imgs/3-extras/0-ast/burp-collaborator-graphic.svg)
+![](../../.gitbook/assets/imgs/extras/ast/burp-collaborator-graphic.svg)
 
 那么，这里到底发生了什么？好吧，正如我们上面提到的，Burp Collaborator可以搜索大量的漏洞，而这些漏洞在DAST测试中曾是看不见的。
 
@@ -56,7 +56,7 @@ Burp Collaborator可以准确识别负责它所收到的每个交互的Burp Scan
 
 ## 带外测试的优势
 
-![](../../.gitbook/assets/imgs/3-extras/0-ast/oast-venn-diagram.svg)
+![](../../.gitbook/assets/imgs/extras/ast/oast-venn-diagram.svg)
 
 正如你可能看到的，自动化OAST是一种强大的技术，可以添加到安全测试人员的武器库中。上面的维恩图显示了OAST如何大大增加了DAST可以识别的安全问题的数量。其中一些也可能被SAST工具发现，但在许多情况下，这不太可能。
 

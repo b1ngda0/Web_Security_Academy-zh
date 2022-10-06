@@ -22,7 +22,7 @@
 
 下一步，Burp Suite将审计应用程序的漏洞。这可能涉及任何事情，从使用类似fuzzing（模糊测试）的爆破代码注入技术，到搜索以不安全方式处理用户登录信息的实例。
 
-Burp Suite的自动扫描器能够检测[一长串的安全漏洞](https://portswigger.net/kb/issues)，其中许多实例不会被传统的DAST单独报告。这些增强的能力来自IAST（交互式应用程序安全测试）和[OAST](./2-oast.md)（带外应用程序安全测试）技术的输入。
+Burp Suite的自动扫描器能够检测[一长串的安全漏洞](https://portswigger.net/kb/issues)，其中许多实例不会被传统的DAST单独报告。这些增强的能力来自IAST（交互式应用程序安全测试）和[OAST](./oast.md)（带外应用程序安全测试）技术的输入。
 
 如果一个组织管理着许多Web应用，或者开发人员正在使用DevSecOps方法，自动DAST扫描将经常连续执行。Burp Suite企业版专为企业安全而设计，[与开发软件无缝集成](https://portswigger.net/developers)并提供极大的可扩展性。
 
@@ -32,7 +32,7 @@ Burp Suite的自动扫描器能够检测[一长串的安全漏洞](https://ports
 
 通常，测试人员会先使用自动化的DAST解决方案，以收获“唾手可得的果实”。这种方法为他们腾出额外的时间来处理更加有趣的漏洞。这就是为什么除了Burp Scanner之外，[Burp Suite专业版](https://portswigger.net/burp/pro)还包含一个强大的截断代理，专为手动Web安全测试人员的需求量身定制。
 
-![](../../.gitbook/assets/imgs/3-extras/0-ast/how-an-intercepting-proxy-works.svg)
+![](../../.gitbook/assets/imgs/extras/ast/how-an-intercepting-proxy-works.svg)
 
 截断代理是一个相当简单的概念。就Burp Suite而言，它意味着一个软件来拦截测试者的浏览器和他们的目标Web应用程序之间的所有HTTP流量。Burp Suite甚至会对HTTPS（加密）流量执行此操作。读取Web应用程序和浏览器之间发送的所有通信的能力在DAST背景下是无价的。
 

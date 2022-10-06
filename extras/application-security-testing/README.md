@@ -1,6 +1,6 @@
 # Web应用安全测试
 
-![](../../.gitbook/assets/imgs/3-extras/0-ast/web-app-security-graphic.svg)
+![](../../.gitbook/assets/imgs/extras/ast/web-app-security-graphic.svg)
 
 ## 什么是Web应用安全测试？
 
@@ -30,7 +30,7 @@ Web应用安全测试中，有各种概念。其中最著名的是：
 
 ### 动态应用程序安全测试（DAST）
 
-[DAST](./1-dast.md)在一个正在运行的应用程序上由外向内地工作。这很像让一个专家团队尝试为你闯入你的银行金库。这就是所谓的“黑盒”安全测试技术，因为Web应用程序背后运行的代码对测试来说是不可见的。这模拟了真实的攻击，Burp Suite在很大程度上是从DAST方法中演变而来的。
+[DAST](./dast.md)在一个正在运行的应用程序上由外向内地工作。这很像让一个专家团队尝试为你闯入你的银行金库。这就是所谓的“黑盒”安全测试技术，因为Web应用程序背后运行的代码对测试来说是不可见的。这模拟了真实的攻击，Burp Suite在很大程度上是从DAST方法中演变而来的。
 
 因为DAST是一种实用的技术，模拟对正在运行的Web应用程序的真实攻击，其结果通常可以被认为是正确的。在所有条件相同的情况下，DAST通常会比SAST报告更少的误报。
 
@@ -48,7 +48,7 @@ IAST修改一个正在运行的应用，以便发现漏洞。这很像在你的�
 
 ### 带外应用程序安全测试（OAST）
 
-[OAST](./2-oast.md)是[PortSwigger首创](https://portswigger.net/blog/oast-out-of-band-application-security-testing)的一项技术。正如我们所知，由于DAST（动态应用程序安全测试）看不到东西，除非它们从外部造成可见的差异，因此它有可能错过“blind”的漏洞。OAST解决了这个问题，同时几乎没有误报，并且也不需要修改应用。
+[OAST](./oast.md)是[PortSwigger首创](https://portswigger.net/blog/oast-out-of-band-application-security-testing)的一项技术。正如我们所知，由于DAST（动态应用程序安全测试）看不到东西，除非它们从外部造成可见的差异，因此它有可能错过“blind”的漏洞。OAST解决了这个问题，同时几乎没有误报，并且也不需要修改应用。
 
 因此，OAST获得了上述三种技术的许多优点，同时最大限度地减少了它们的弊端。与SAST和IAST一样，它可以看到DAST无法看到的漏洞，但它不像SAST那样容易报告误报。虽然IAST是一种侵入性的使用方法，但OAST不会做这样的改变，所以它要安全得多。
 
