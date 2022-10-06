@@ -97,11 +97,10 @@
   * [HTTP请求走私](advanced/4-request-smuggling/1-request-smuggling.md)
   * [查找HTTP请求走私漏洞](advanced/4-request-smuggling/2-request-smuggling-finding.md)
   * [利用HTTP请求走私漏洞](advanced/4-request-smuggling/3-request-smuggling-exploiting.md)
-* [OAuth认证](advanced/5-oauth/README.md)
-  * [OAuth 2.0身份验证漏洞](advanced/5-oauth/1-oauth.md)
-  * [OAuth授权类型](advanced/5-oauth/2-oauth-grant-types.md)
-  * [OpenID Connect](advanced/5-oauth/3-oauth-openid.md)
-  * [如何防范OAuth认证漏洞](advanced/5-oauth/4-oauth-preventing.md)
+* [OAuth认证](advanced/oauth/README.md)
+  * [OAuth授权类型](advanced/oauth/grant-types.md)
+  * [OpenID Connect](advanced/oauth/openid.md)
+  * [如何防范OAuth认证漏洞](advanced/oauth/preventing.md)
 * [JWT认证](advanced/6-jwt/README.md)
 
 

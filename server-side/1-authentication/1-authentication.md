@@ -67,7 +67,7 @@ description: '原文链接：https://portswigger.net/web-security/authentication
 
 > 阅读更多
 >
-> {% page-ref page="../../advanced/5-oauth/1-oauth.md" %}
+> {% page-ref page="../../advanced/oauth/README.md" %}
 
 ### 防止你自己的认证机制被攻击
 

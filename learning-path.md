@@ -37,5 +37,5 @@
 3. [**Web缓存中毒**](advanced/2-web-cache-poisoning/)
 4. [**HTTP主机头攻击**](advanced/3-host-header/)
 5. [**HTTP请求走私**](advanced/4-request-smuggling/)
-6. [**OAuth认证**](advanced/5-oauth/)
+6. [**OAuth认证**](advanced/oauth/)
 7. [**JWT认证**](advanced/6-jwt/)
