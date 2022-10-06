@@ -1,6 +1,6 @@
 # Table of contents
 
-* [首页](README.md)
+* [首页](home.md)
 * [译序](preface.md)
 * [学习路线](learning-path.md)
 
