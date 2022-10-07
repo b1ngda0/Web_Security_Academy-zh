@@ -1,7 +1,7 @@
-<!-- ---
+<!--
 cover: .gitbook/assets/imgs/cover/home-cover.jpeg
 coverY: 0
---- -->
+-->
 
 # [译] Web安全学院 - PortSwigger
 
