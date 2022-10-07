@@ -4,7 +4,7 @@
 * [译序](preface.md)
 * [学习路线](learning-path.md)
 
-## 前篇 <a href="#3-extras" id="3-extras"></a>
+## 前篇 <a href="#extras" id="extras"></a>
 
 * [Web应用程序安全测试](extras/application-security-testing/README.md)
   * [动态应用程序安全测试（DAST）](extras/application-security-testing/dast.md)
